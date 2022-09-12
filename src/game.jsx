@@ -15,9 +15,15 @@ function Game() {
     return (
         <div>
             <h1>The Grid!</h1>
-            <ul>{board.map((row) => 
-                <p>{row}</p>
-            )}</ul>
+            {board.map((row, i) => {
+                return (
+                    <ul key={i}>{row.map((cell, i) => {
+                        return (
+                            <p key={i}>{cell}</p>
+                        )
+                    })}</ul>
+                )
+            } )}
         </div>
     )
 }
