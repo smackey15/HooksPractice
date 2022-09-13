@@ -11,6 +11,8 @@ function Game() {
     ]
 
     const [board, setBoard] = useState(grid)
+    const [isAlive, setIsAlive] = useState(false)
+    console.log(isAlive)
 
     return (
         <div>
@@ -19,7 +21,7 @@ function Game() {
                 return (
                     <ul key={i}>{row.map((cell, i) => {
                         return (
-                            <p key={i}>{cell}</p>
+                            <p key={i} onClick={() => setIsAlive(!isAlive)}>{cell}</p>
                         )
                     })}</ul>
                 )
