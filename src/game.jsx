@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState} from 'react';
+import { getNextGeneration } from './gol';
 
 function Game() {
     const grid = [
@@ -10,9 +11,25 @@ function Game() {
         [0,0,0,0]
     ]
 
+    const blinker = {
+        0: [],
+        1: [2],
+        2: [2],
+        3: [2],
+        4: [],
+    };    
+
     const [board, setBoard] = useState(grid)
     const [isAlive, setIsAlive] = useState(false)
+    const [generation, setGeneration] = useState(blinker)
     console.log(isAlive)
+    console.log(generation)
+
+    const handleClick = () => {
+        setInterval(() => {
+            setGeneration(getNextGeneration(generation))
+        }, 1000);
+    }
 
     return (
         <div>
@@ -26,6 +43,8 @@ function Game() {
                     })}</ul>
                 )
             } )}
+            <button onClick={handleClick}>Start</button>
+            <button>Stop</button>
         </div>
     )
 }

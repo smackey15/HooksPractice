@@ -1,5 +1,5 @@
 
-function getNextGeneration(inputBoard) {
+export function getNextGeneration(inputBoard) {
     const outputBoard = JSON.parse(JSON.stringify(inputBoard))
     const hash = {}
 
@@ -125,13 +125,13 @@ function getNextGeneration(inputBoard) {
 //   console.log(getNextGeneration(pulsar4))
 
 
-// const blinker = {
-// 	0: [],
-// 	1: [2],
-// 	2: [2],
-// 	3: [2],
-// 	4: [],
-// };
+const blinker = {
+	0: [],
+	1: [2],
+	2: [2],
+	3: [2],
+	4: [],
+};
 // console.log(getNextGeneration(blinker))
 
 // const blinker2 = {
@@ -163,30 +163,30 @@ function getNextGeneration(inputBoard) {
 
 // console.log(getNextGeneration({ '0': [], '1': [ 1, 2 ], '2': [ 1, 2 ], '3': [] }))
 
-const glider1 = {
-    0: [],
-    1: [1],
-    2: [2],
-    3: [0, 1, 2],
-    4: []
-}
-console.log(getNextGeneration(glider1))
+// const glider1 = {
+//     0: [],
+//     1: [1],
+//     2: [2],
+//     3: [0, 1, 2],
+//     4: []
+// }
+// console.log(getNextGeneration(glider1))
 
-const glider2 = {
-     '0': [], '1': [], '2': [ 0, 2 ], '3': [ 1, 2 ], '4': [ 1 ] 
-}
-console.log(getNextGeneration(glider2))
+// const glider2 = {
+//      '0': [], '1': [], '2': [ 0, 2 ], '3': [ 1, 2 ], '4': [ 1 ] 
+// }
+// console.log(getNextGeneration(glider2))
 
-const glider3 = { '0': [], '1': [], '2': [ 2 ], '3': [ 0, 2 ], '4': [ 1, 2 ], '5': [] }
-console.log(getNextGeneration(glider3))
+// const glider3 = { '0': [], '1': [], '2': [ 2 ], '3': [ 0, 2 ], '4': [ 1, 2 ], '5': [] }
+// console.log(getNextGeneration(glider3))
 
-const glider4 = { '0': [], '1': [], '2': [ 1 ], '3': [ 2, 3 ], '4': [ 1, 2 ], '5': [] }
-console.log(getNextGeneration(glider4))
+// const glider4 = { '0': [], '1': [], '2': [ 1 ], '3': [ 2, 3 ], '4': [ 1, 2 ], '5': [] }
+// console.log(getNextGeneration(glider4))
 
-const glider5 = { '0': [], '1': [], '2': [ 2 ], '3': [ 3 ], '4': [ 1, 2, 3 ], '5': [] }
-console.log(getNextGeneration(glider5))
+// const glider5 = { '0': [], '1': [], '2': [ 2 ], '3': [ 3 ], '4': [ 1, 2, 3 ], '5': [] }
+// console.log(getNextGeneration(glider5))
 
-const glider6 = { '0': [], '1': [], '2': [], '3': [ 1, 3 ], '4': [ 2, 3 ], '5': [ 2 ] }
-console.log(getNextGeneration(glider6))
+// const glider6 = { '0': [], '1': [], '2': [], '3': [ 1, 3 ], '4': [ 2, 3 ], '5': [ 2 ] }
+// console.log(getNextGeneration(glider6))
 // console.log(getNextGeneration(blinker))
 // const blinker = { 0: [], 1: [], 2: [1, 2, 3], 3: [], 4: [] }
