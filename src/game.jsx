@@ -11,6 +11,21 @@ function Game() {
         [0,0,0,0]
     ]
 
+    const convertGrid = (twoD) => {
+        const obj = {}
+        for (let i=0; i<twoD.length; i++) {
+            obj[i] = []
+            for (let j=0; j<twoD[0].length; j++) {
+                if (twoD[i][j] !== 0) {
+                    obj[i].push(j)
+                } 
+            }
+        }
+        return obj
+    }
+
+    console.log(convertGrid(grid))
+
     const blinker = {
         0: [],
         1: [2],
@@ -23,9 +38,9 @@ function Game() {
     const [isAlive, setIsAlive] = useState(false)
     const [generation, setGeneration] = useState(blinker)
     const [intervalId, setIntervalId] = useState(0)
-    console.log(isAlive)
-    console.log(generation)
-    console.log(intervalId)
+    // console.log(isAlive)
+    // console.log(generation)
+    // console.log(intervalId)
 
     const handleStart = () => {
         const newIntervalId = setInterval(() => {
