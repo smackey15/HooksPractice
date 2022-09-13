@@ -22,13 +22,23 @@ function Game() {
     const [board, setBoard] = useState(grid)
     const [isAlive, setIsAlive] = useState(false)
     const [generation, setGeneration] = useState(blinker)
+    const [intervalId, setIntervalId] = useState(0)
     console.log(isAlive)
     console.log(generation)
+    console.log(intervalId)
 
-    const handleClick = () => {
-        setInterval(() => {
-            setGeneration(getNextGeneration(generation))
-        }, 1000);
+    const handleStart = () => {
+        const newIntervalId = setInterval(() => {
+            setGeneration(prevGeneration => getNextGeneration(prevGeneration))
+        }, 500);
+        setIntervalId(newIntervalId)
+    }
+
+    const handleStop = () => {
+        if (intervalId) {
+            clearInterval(intervalId)
+            setIntervalId(0)
+        }
     }
 
     return (
@@ -43,8 +53,8 @@ function Game() {
                     })}</ul>
                 )
             } )}
-            <button onClick={handleClick}>Start</button>
-            <button>Stop</button>
+            <button onClick={handleStart}>Start</button>
+            <button onClick={handleStop}>Stop</button>
         </div>
     )
 }
