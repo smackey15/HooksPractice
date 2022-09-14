@@ -3,14 +3,18 @@ import {useState} from 'react';
 import { getNextGeneration } from './gol';
 
 function Game() {
-    const grid = [
-        [0,0,0,0],
-        [0,0,1,0],
-        [0,0,1,0],
-        [0,0,1,0],
-        [0,0,0,0]
-    ]
+    // const grid = [
+    //     [0,0,0,0],
+    //     [0,0,1,0],
+    //     [0,0,1,0],
+    //     [0,0,1,0],
+    //     [0,0,0,0]
+    // ]
 
+    const grid = Array.from(Array(10), () => new Array(10).fill())
+    console.log(grid)
+
+// converts 2d array into object that can be passed into 'getNextGeneration' function
     const convertGrid = (twoD) => {
         const obj = {}
         for (let i=0; i<twoD.length; i++) {
@@ -24,8 +28,6 @@ function Game() {
         return obj
     }
 
-    console.log(convertGrid(grid))
-
     const blinker = {
         0: [],
         1: [2],
@@ -38,9 +40,9 @@ function Game() {
     const [isAlive, setIsAlive] = useState(false)
     const [generation, setGeneration] = useState(blinker)
     const [intervalId, setIntervalId] = useState(0)
-    // console.log(isAlive)
-    // console.log(generation)
-    // console.log(intervalId)
+    console.log(isAlive)
+    console.log(generation)
+    console.log(intervalId)
 
     const handleStart = () => {
         const newIntervalId = setInterval(() => {
@@ -56,15 +58,19 @@ function Game() {
         }
     }
 
+// iterate over board and display each cell as a unique component(?).
+// clicking each cell should flip isAlive back and forth from false to true to false to true, etc.
+// it should be white if isAlive is false and black if isAlive is true
+// something doesn't fully work on line 68
     return (
         <div>
             <h1>The Grid!</h1>
             {board.map((row, i) => {
                 return (
                     <ul key={i}>{row.map((cell, i) => {
-                        return (
-                            <p key={i} onClick={() => setIsAlive(!isAlive)}>{cell}</p>
-                        )
+                        return !isAlive ? (
+                            <input style={{background:"red", height:"10px", width:"10px"}} key={i} onClick={() => setIsAlive(!isAlive)}>{cell}</input>
+                        ) : (<input style={{background:"black", height:"10px", width:"10px"}} key={i} onClick={() => setIsAlive(!isAlive)}>{cell}</input>)
                     })}</ul>
                 )
             } )}
