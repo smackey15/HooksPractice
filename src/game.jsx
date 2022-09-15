@@ -37,10 +37,11 @@ function Game() {
     };    
 
     const [board, setBoard] = useState(grid)
-    const [isAlive, setIsAlive] = useState(false)
+    const [cellAlive, setCellAlive] = useState(false)
+    // const [isAlive, setIsAlive] = useState(false)
     const [generation, setGeneration] = useState(blinker)
     const [intervalId, setIntervalId] = useState(0)
-    console.log(isAlive)
+    console.log(cellAlive)
     console.log(generation)
     console.log(intervalId)
 
@@ -67,10 +68,10 @@ function Game() {
             <h1>The Grid!</h1>
             {board.map((row, i) => {
                 return (
-                    <ul key={i}>{row.map((cell, i) => {
-                        return !isAlive ? (
-                            <input style={{background:"red", height:"10px", width:"10px"}} key={i} onClick={() => setIsAlive(!isAlive)}>{cell}</input>
-                        ) : (<input style={{background:"black", height:"10px", width:"10px"}} key={i} onClick={() => setIsAlive(!isAlive)}>{cell}</input>)
+                    <ul key={i}>{row.map((cell, j) => {
+                        return !cellAlive ? (
+                            <input style={{background:"red", height:"10px", width:"10px"}} key={j} onClick={() => setBoard(!cellAlive)}>{board[i][j]}</input>
+                        ) : (<input style={{background:"black", height:"10px", width:"10px"}} key={j} onClick={() => setCellAlive(!cellAlive)}>{board[i][j]}</input>)
                     })}</ul>
                 )
             } )}
