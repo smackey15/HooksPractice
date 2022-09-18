@@ -1,35 +1,21 @@
 import React from 'react';
 import {useState} from 'react';
 
-function Cell() {
+function Cell(props) {
 
-const grid = Array.from(Array(10), () => new Array(10).fill())
-console.log(grid)
+const [isAlive, setIsAlive] = useState(false)
 
-const returnCells = (grid) => {
-    const cells = []
-
-    for (let i=0; i<grid.length; i++) {
-        for (let j=0; j<grid[0].length; j++) {
-            cells.push([i,j])
-        }
-    }
-    return cells
+function handleAlive() {
+    setIsAlive(!isAlive)
 }
-
-let banana = returnCells(grid)
-console.log(banana)
-
-const [pos, setPos] = useState(banana)
+console.log(isAlive)
 
 return (
-    <div>
-        {pos.map((ele, i) =>
-        <div>{ele}</div>
-        )}
+    <div>{!isAlive ?
+        <p style={{background:"red", height:"10px", width:"10px", cursor:"pointer"}} onClick={handleAlive}>{props.pos}</p> :
+        <p style={{background:"black", height:"10px", width:"10px", cursor:"pointer"}} onClick={() => setIsAlive(!isAlive)}>{props.pos}</p>}
     </div>
 )
-
 
 }
 
