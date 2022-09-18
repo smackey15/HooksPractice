@@ -4,18 +4,9 @@ import { getNextGeneration } from './gol';
 import Cell from './cell'
 
 function Game() {
-    // const grid = [
-    //     [0,0,0,0],
-    //     [0,0,1,0],
-    //     [0,0,1,0],
-    //     [0,0,1,0],
-    //     [0,0,0,0]
-    // ]
-
     const grid = Array.from(Array(10), () => new Array(10).fill())
-    // console.log(grid)
-
-// converts 2d array into object that can be passed into 'getNextGeneration' function
+    
+    // converts 2d array into object that can be passed into 'getNextGeneration' function
     const convertGrid = (twoD) => {
         const obj = {}
         for (let i=0; i<twoD.length; i++) {
@@ -29,25 +20,25 @@ function Game() {
         return obj
     }
 
+    // here for testing until react board works
     const blinker = {
         0: [],
         1: [2],
         2: [2],
         3: [2],
         4: [],
-    };    
+    }; 
+
     const [board, setBoard] = useState(grid)
-    const [cellAlive, setCellAlive] = useState(false)
-    // const [isAlive, setIsAlive] = useState(false)
+    // here for testing until react board works
     const [generation, setGeneration] = useState(blinker)
     const [intervalId, setIntervalId] = useState(0)
-    console.log(board)
-    console.log(cellAlive)
+    // console.log(board)
     console.log(generation)
     console.log(intervalId)  
 
     const handleStart = () => {
-        // const converted = convertGrid(board)
+        // const converted = convertGrid(board) // converts 2d grid to object that can be passed into the getNextGeneration function //
         const newIntervalId = setInterval(() => {
             setGeneration(prevGeneration => getNextGeneration(prevGeneration))
         }, 500);
@@ -65,13 +56,8 @@ function Game() {
         const newBoard = board.map((arr) => arr.slice());
         newBoard[pos[0]][pos[1]] = 1 
         setBoard(newBoard)
-        // setCellAlive(!cellAlive)  
     }
 
-// iterate over board and display each cell as a unique component(?).
-// clicking each cell should flip isAlive back and forth from false to true to false to true, etc.
-// it should be white if isAlive is false and black if isAlive is true
-// something doesn't fully work on line 68
     return (
         <div>
             <h1>The Grid!</h1>
@@ -79,7 +65,11 @@ function Game() {
             {board.map((row,i) => 
                 row.map((col,j) =>
                 <Cell
+                key={[i,j]}
+                r={i}
+                c={j}
                 pos={board[i][j]}
+                board={board}
             />))
             }
            </ul>
@@ -88,6 +78,10 @@ function Game() {
         </div>
     )
    
+}
+
+export default Game;
+
     // return (
     //     <div>
     //         <h1>The Grid!</h1>
@@ -104,6 +98,3 @@ function Game() {
     //         <button onClick={handleStop}>Stop</button>
     //     </div>
     // )
-}
-
-export default Game;
