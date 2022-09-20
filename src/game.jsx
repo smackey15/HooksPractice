@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import { getNextGeneration } from './gol';
 import Cell from './cell'
 
@@ -21,26 +21,26 @@ function Game() {
     }
 
     // here for testing until react board works
-    const blinker = {
-        0: [],
-        1: [2],
-        2: [2],
-        3: [2],
-        4: [],
-    }; 
+    // const blinker = {
+    //     0: [],
+    //     1: [2],
+    //     2: [2],
+    //     3: [2],
+    //     4: [],
+    // }; 
 
     const [board, setBoard] = useState(grid)
     // here for testing until react board works
-    const [generation, setGeneration] = useState(blinker)
+    const [converted, setConverted] = useState({})
     const [intervalId, setIntervalId] = useState(0)
-    // console.log(board)
-    console.log(generation)
+    console.log(board)
+    console.log(converted)
     console.log(intervalId)  
 
     const handleStart = () => {
-        // const converted = convertGrid(board) // converts 2d grid to object that can be passed into the getNextGeneration function //
+        setConverted(convertGrid(board)) // converts 2d grid to object that can be passed into the getNextGeneration function //
         const newIntervalId = setInterval(() => {
-            setGeneration(prevGeneration => getNextGeneration(prevGeneration))
+            setConverted(prevConverted => getNextGeneration(prevConverted))
         }, 500);
         setIntervalId(newIntervalId)
     }
@@ -52,11 +52,15 @@ function Game() {
         }
     }
 
-    const handleAlive = (pos) => {  
-        const newBoard = board.map((arr) => arr.slice());
-        newBoard[pos[0]][pos[1]] = 1 
-        setBoard(newBoard)
-    }
+    // const handleAlive = (pos) => {  
+    //     const newBoard = board.map((arr) => arr.slice());
+    //     newBoard[pos[0]][pos[1]] = 1 
+    //     setBoard(newBoard)
+    // }
+
+    // useEffect = () => {
+    //     setBoard(board)
+    // }
 
     return (
         <div>
@@ -70,6 +74,7 @@ function Game() {
                 c={j}
                 pos={board[i][j]}
                 board={board}
+                setBoard={setBoard}
             />))
             }
            </ul>
