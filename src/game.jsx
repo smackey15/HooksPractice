@@ -4,6 +4,7 @@ import { getNextGeneration } from './gol';
 import Cell from './cell'
 
 function Game() {
+    // initialize grid to 10 x 10 2d array with undefined values
     const grid = Array.from(Array(10), () => new Array(10).fill())
     
     // converts 2d array into object that can be passed into 'getNextGeneration' function
@@ -20,6 +21,19 @@ function Game() {
         return obj
     }
 
+    const convertObject = (object) => {
+        const twoD = Array.from(Array(10), () => new Array(10).fill())
+        for (let row in object) {
+            const cols = object[row]
+            if (cols.length) {
+                for (let i=0; i<cols.length; i++) {
+                    twoD[row][cols[i]] = 1
+                }
+            }
+        }
+        return twoD
+    }
+
     // here for testing until react board works
     // const blinker = {
     //     0: [],
@@ -29,38 +43,38 @@ function Game() {
     //     4: [],
     // }; 
 
+    // console.log(convertObject(blinker))
+
     const [board, setBoard] = useState(grid)
-    // here for testing until react board works
-    const [converted, setConverted] = useState({})
-    const [intervalId, setIntervalId] = useState(0)
-    console.log(board)
-    console.log(converted)
-    console.log(intervalId)  
+    const [gameRunning, setGamerunning] = useState(false)
+    // const [converted, setConverted] = useState({})
+    // const [intervalId, setIntervalId] = useState(0)
+    // console.log(intervalId)  
 
     const handleStart = () => {
-        setConverted(convertGrid(board)) // converts 2d grid to object that can be passed into the getNextGeneration function //
-        const newIntervalId = setInterval(() => {
-            setConverted(prevConverted => getNextGeneration(prevConverted))
-        }, 500);
-        setIntervalId(newIntervalId)
+        setGamerunning(true)
     }
+    console.log(board)
+
+    useEffect(() => {
+        if (gameRunning) {
+        const newIntervalId = setInterval(() => {
+            console.log(board)
+            const converted = convertGrid(board) // pass 2d board to convertgrid function, return an object, set "converted" to that object
+            console.log(converted)
+            const nextGeneration = getNextGeneration(converted)
+            console.log(nextGeneration)
+            const nextBoard = convertObject(nextGeneration)
+            console.log(nextBoard)
+            setBoard(nextBoard)
+        }, 2000);
+        return (()=> clearInterval(newIntervalId))
+    }
+    })
 
     const handleStop = () => {
-        if (intervalId) {
-            clearInterval(intervalId)
-            setIntervalId(0)
-        }
+        setGamerunning(false)
     }
-
-    // const handleAlive = (pos) => {  
-    //     const newBoard = board.map((arr) => arr.slice());
-    //     newBoard[pos[0]][pos[1]] = 1 
-    //     setBoard(newBoard)
-    // }
-
-    // useEffect = () => {
-    //     setBoard(board)
-    // }
 
     return (
         <div>
@@ -103,3 +117,19 @@ export default Game;
     //         <button onClick={handleStop}>Stop</button>
     //     </div>
     // )
+
+            // const newIntervalId = setInterval(() => {
+        //     console.log(board)
+        //     const converted = convertGrid(board) // pass 2d board to convertgrid function, return an object, set "converted" to that object
+        //     console.log(converted)
+        //     const nextGeneration = getNextGeneration(converted)
+        //     console.log(nextGeneration)
+        //     const nextBoard = convertObject(nextGeneration)
+        //     console.log(nextBoard)
+        // }, 2000);
+        // setIntervalId(newIntervalId)
+
+        // if (intervalId) {
+        //     clearInterval(intervalId)
+        //     setIntervalId(0)
+        // }
