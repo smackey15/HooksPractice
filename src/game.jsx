@@ -2,6 +2,7 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import { getNextGeneration } from './gol';
 import Cell from './cell'
+import './game.css'
 
 function Game() {
     // initialize grid to 10 x 10 2d array with undefined values
@@ -12,7 +13,7 @@ function Game() {
         const obj = {}
         for (let i=0; i<twoD.length; i++) {
             obj[i] = []
-            for (let j=0; j<twoD[0].length; j++) {
+            for (let j=0; j<twoD[i].length; j++) {
                 if (twoD[i][j] !== undefined) {
                     obj[i].push(j)
                 } 
@@ -21,35 +22,25 @@ function Game() {
         return obj
     }
 
+    // converts object back into 2D array that can be rendered on the browser
     const convertObject = (object) => {
         const twoD = Array.from(Array(10), () => new Array(10).fill())
-        for (let row in object) {
-            const cols = object[row]
+        for (let row in object) { // 8
+            // if (!twoD[row]) twoD[row] = new Array(10).fill() // ** this code makes the grid expand as the coordinates grow beyong the existing rows
+            if (twoD[row]) { // this code stops the board from expanding beyong the existing parameters
+            const cols = object[row] // 8
             if (cols.length) {
                 for (let i=0; i<cols.length; i++) {
                     twoD[row][cols[i]] = 1
                 }
             }
         }
+        }
         return twoD
     }
 
-    // here for testing until react board works
-    // const blinker = {
-    //     0: [],
-    //     1: [2],
-    //     2: [2],
-    //     3: [2],
-    //     4: [],
-    // }; 
-
-    // console.log(convertObject(blinker))
-
     const [board, setBoard] = useState(grid)
     const [gameRunning, setGamerunning] = useState(false)
-    // const [converted, setConverted] = useState({})
-    // const [intervalId, setIntervalId] = useState(0)
-    // console.log(intervalId)  
 
     const handleStart = () => {
         setGamerunning(true)
@@ -60,14 +51,14 @@ function Game() {
         if (gameRunning) {
         const newIntervalId = setInterval(() => {
             console.log(board)
-            const converted = convertGrid(board) // pass 2d board to convertgrid function, return an object, set "converted" to that object
+            const converted = convertGrid(board) // pass 2d board to convertgrid function, return an object
             console.log(converted)
-            const nextGeneration = getNextGeneration(converted)
+            const nextGeneration = getNextGeneration(converted) // pass object to function and get next version of object
             console.log(nextGeneration)
-            const nextBoard = convertObject(nextGeneration)
+            const nextBoard = convertObject(nextGeneration) // pass new object to convertObject function, return a 2d board
             console.log(nextBoard)
             setBoard(nextBoard)
-        }, 2000);
+        }, 1000);
         return (()=> clearInterval(newIntervalId))
     }
     })
@@ -76,10 +67,16 @@ function Game() {
         setGamerunning(false)
     }
 
+    const handleReset = () => {
+        setGamerunning(false)
+        setBoard(grid)
+    }
+
     return (
         <div>
-            <h1>The Grid!</h1>
-           <ul>
+            {/* <h1>The Grid!</h1> */}
+            <div>
+           <ul className='test'>
             {board.map((row,i) => 
                 row.map((col,j) =>
                 <Cell
@@ -92,8 +89,10 @@ function Game() {
             />))
             }
            </ul>
+           </div>
             <button onClick={handleStart}>Start</button>
             <button onClick={handleStop}>Stop</button>
+            <button onClick={handleReset}>Reset</button>
         </div>
     )
    

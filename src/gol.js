@@ -1,30 +1,32 @@
 
 export function getNextGeneration(inputBoard) {
-    const outputBoard = JSON.parse(JSON.stringify(inputBoard))
+    const outputBoard = JSON.parse(JSON.stringify(inputBoard)) // {0: [0, 1, 2], 1: []}
     const hash = {}
 
-    for (let row in inputBoard) {
-        const cols = inputBoard[row]
+    for (let row in inputBoard) {  // 0
+        const cols = inputBoard[row] // [0, 1, 2]
         for (let col of cols) { 
-           const i = Number(row)
-           const j = col 
+           const i = Number(row) // 0
+           const j = col // 0
            const neighbors = [
-            [i, j + 1], 
-            [i, j - 1],
-            [i + 1, j], 
-            [i - 1, j], 
-            [i + 1, j + 1], 
-            [i - 1, j - 1], 
-            [i + 1, j - 1],
-            [i - 1, j + 1],
+            [i, j + 1], // 0, 1
+            [i, j - 1], // 0, -1
+            [i + 1, j], // 1, 0
+            [i - 1, j], // -1, 0
+            [i + 1, j + 1], // 1, 1
+            [i - 1, j - 1], // -1, -1
+            [i + 1, j - 1], // 1, -1
+            [i - 1, j + 1], // -1, 1
         ]
             for (let neighbor of neighbors) {
                 const [newI, newJ] = neighbor 
+                if (newI >= 0 && newJ >= 0) {  // ** NEW CODE **
                 if(`${newI} ${newJ}` in hash) {
                     hash[`${newI} ${newJ}`] += 1
                 } else {
                     hash[`${newI} ${newJ}`] = 1
                 }
+            }
             }
         }
     }
@@ -32,11 +34,12 @@ export function getNextGeneration(inputBoard) {
         const arrPos = pos.split(' ')
         const r = arrPos[0] 
         const c = arrPos[1] 
+        if (!(r in outputBoard)) outputBoard[r] = [] // ** NEW CODE **
         if(hash[pos] === 3) { 
             if (!outputBoard[r].includes(Number(c))) outputBoard[r].push(Number(c))
         }
         if(hash[pos] < 2 || hash[pos] > 3) {
-            if (!(r in outputBoard)) outputBoard[r] = []
+            // if (!(r in outputBoard)) outputBoard[r] = []
             const index = outputBoard[r].indexOf(Number(c))
             if (index !== -1) outputBoard[r].splice(index, 1)
         }
@@ -125,13 +128,13 @@ export function getNextGeneration(inputBoard) {
 //   console.log(getNextGeneration(pulsar4))
 
 
-const blinker = {
-	0: [],
-	1: [2],
-	2: [2],
-	3: [2],
-	4: [],
-};
+// const blinker = {
+// 	0: [],
+// 	1: [2],
+// 	2: [2],
+// 	3: [2],
+// 	4: [],
+// };
 // console.log(getNextGeneration(blinker))
 
 // const blinker2 = {
