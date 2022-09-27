@@ -20,13 +20,13 @@ export function getNextGeneration(inputBoard) {
         ]
             for (let neighbor of neighbors) {
                 const [newI, newJ] = neighbor 
-                if (newI >= 0 && newJ >= 0) {  // ** NEW CODE **
+                // if (newI >= 0 && newJ >= 0) {  // ** NEW CODE **
                 if(`${newI} ${newJ}` in hash) {
                     hash[`${newI} ${newJ}`] += 1
                 } else {
                     hash[`${newI} ${newJ}`] = 1
                 }
-            }
+            // }
             }
         }
     }

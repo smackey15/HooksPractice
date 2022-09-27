@@ -31,7 +31,9 @@ function Game() {
             const cols = object[row] // 8
             if (cols.length) {
                 for (let i=0; i<cols.length; i++) {
-                    twoD[row][cols[i]] = 1
+                    if (cols[i] <=9) { // ** not dynamic **
+                        twoD[row][cols[i]] = 1
+                    }
                 }
             }
         }
