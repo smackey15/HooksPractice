@@ -1,9 +1,6 @@
 import React from 'react';
-import {useState} from 'react';
 
 function Cell(props) {
-
-    // const [isAlive, setIsAlive] = useState(props.pos)
 
     function handleAlive() {
         const newBoard = props.board.map((arr) => arr.slice());
@@ -14,8 +11,6 @@ function Cell(props) {
          }
         props.setBoard(newBoard)
     }
-
-    // console.log(isAlive)
 
     return (
         <div>

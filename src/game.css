@@ -1,5 +1,47 @@
-.test {
+.grid {
     display: grid;
     grid-template-columns: repeat(10, 40px);
     grid-template-rows: auto
+}
+
+.start-on {
+    cursor: pointer;
+    color: black;
+    background-color: lightblue;
+    border-radius: 4px;
+}
+
+.start-off {
+    cursor: pointer;
+    color: lightblue;
+    background-color: black;
+    border-radius: 4px;
+}
+
+.stop-on {
+    cursor: pointer;
+    color: black;
+    background-color: lightblue;
+    border-radius: 4px;
+}
+
+.stop-off {
+    cursor: pointer;
+    color: lightblue;
+    background-color: black;
+    border-radius: 4px;
+}
+
+.reset-on {
+    cursor: pointer;
+    color: black;
+    background-color: lightblue;
+    border-radius: 4px;
+}
+
+.reset-off {
+    cursor: pointer;
+    color: lightblue;
+    background-color: black;
+    border-radius: 4px;
 }

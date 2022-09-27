@@ -78,7 +78,7 @@ function Game() {
         <div>
             {/* <h1>The Grid!</h1> */}
             <div>
-           <ul className='test'>
+           <ul className='grid'>
             {board.map((row,i) => 
                 row.map((col,j) =>
                 <Cell
@@ -92,9 +92,19 @@ function Game() {
             }
            </ul>
            </div>
-            <button onClick={handleStart}>Start</button>
-            <button onClick={handleStop}>Stop</button>
-            <button onClick={handleReset}>Reset</button>
+           <br />
+           {!gameRunning ?
+            <button className='start-off' onClick={handleStart}>Start</button> :
+            <button className='start-on' onClick={handleStart}>Start</button>
+           }
+           {gameRunning ?
+            <button className='stop-off' onClick={handleStop}>Stop</button> :
+            <button className='stop-on' onClick={handleStop}>Stop</button> 
+            }
+            {!gameRunning ?
+            <button className='reset-off' onClick={handleReset}>Reset</button> :
+            <button className='reset-on' onClick={handleReset}>Reset</button>
+            }
         </div>
     )
    
