@@ -6,7 +6,7 @@ import './game.css'
 
 function Game() {
     // initialize grid to 10 x 10 2d array with undefined values
-    const grid = Array.from(Array(10), () => new Array(10).fill())
+    const grid = Array.from(Array(40), () => new Array(100).fill())
     
     // converts 2d array into object that can be passed into 'getNextGeneration' function
     const convertGrid = (twoD) => {
@@ -24,14 +24,14 @@ function Game() {
 
     // converts object back into 2D array that can be rendered on the browser
     const convertObject = (object) => {
-        const twoD = Array.from(Array(10), () => new Array(10).fill())
+        const twoD = Array.from(Array(40), () => new Array(100).fill())
         for (let row in object) { // 8
             // if (!twoD[row]) twoD[row] = new Array(10).fill() // ** this code makes the grid expand as the coordinates grow beyong the existing rows
             if (twoD[row]) { // this code stops the board from expanding beyong the existing parameters
             const cols = object[row] // 8
             if (cols.length) {
                 for (let i=0; i<cols.length; i++) {
-                    if (cols[i] <=9) { // ** not dynamic **
+                    if (cols[i] <=99) { // ** not dynamic **
                         twoD[row][cols[i]] = 1
                     }
                 }
@@ -63,7 +63,7 @@ function Game() {
             console.log(nextBoard)
             setBoard(nextBoard)
             setNewObj(nextGeneration)
-        }, 1000);
+        }, 500);
         return (()=> clearInterval(newIntervalId))
     }
     })

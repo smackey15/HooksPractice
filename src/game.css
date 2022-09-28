@@ -1,6 +1,6 @@
 .grid {
     display: grid;
-    grid-template-columns: repeat(10, 40px);
+    grid-template-columns: repeat(100, 15px);
     grid-template-rows: auto
 }
 
