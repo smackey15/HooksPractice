@@ -43,8 +43,10 @@ function Game() {
 
     const [board, setBoard] = useState(grid)
     const [gameRunning, setGamerunning] = useState(false)
+    const [newObj, setNewObj] = useState({})
 
     const handleStart = () => {
+        setNewObj(convertGrid(board))
         setGamerunning(true)
     }
     console.log(board)
@@ -52,14 +54,15 @@ function Game() {
     useEffect(() => {
         if (gameRunning) {
         const newIntervalId = setInterval(() => {
-            console.log(board)
-            const converted = convertGrid(board) // pass 2d board to convertgrid function, return an object
-            console.log(converted)
-            const nextGeneration = getNextGeneration(converted) // pass object to function and get next version of object
+            // console.log(board)
+            // const converted = convertGrid(board) // pass 2d board to convertgrid function, return an object
+            // console.log(converted)
+            const nextGeneration = getNextGeneration(newObj) // pass object to function and get next version of object
             console.log(nextGeneration)
             const nextBoard = convertObject(nextGeneration) // pass new object to convertObject function, return a 2d board
             console.log(nextBoard)
             setBoard(nextBoard)
+            setNewObj(nextGeneration)
         }, 1000);
         return (()=> clearInterval(newIntervalId))
     }
