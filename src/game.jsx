@@ -44,12 +44,14 @@ function Game() {
     const [board, setBoard] = useState(grid)
     const [gameRunning, setGamerunning] = useState(false)
     const [newObj, setNewObj] = useState({})
+    const [generation, setGeneration] = useState(0)
 
     const handleStart = () => {
         setNewObj(convertGrid(board))
         setGamerunning(true)
     }
     console.log(board)
+    console.log(newObj)
 
     useEffect(() => {
         if (gameRunning) {
@@ -62,6 +64,7 @@ function Game() {
             const nextBoard = convertObject(nextGeneration) // pass new object to convertObject function, return a 2d board
             console.log(nextBoard)
             setBoard(nextBoard)
+            setGeneration(prevGeneration => prevGeneration + 1)
             setNewObj(nextGeneration)
         }, 500);
         return (()=> clearInterval(newIntervalId))
@@ -75,13 +78,25 @@ function Game() {
     const handleReset = () => {
         setGamerunning(false)
         setBoard(grid)
+        setGeneration(0)
+        setNewObj({})
+    }
+
+    const handleNext = () => {
+        const nextGeneration = getNextGeneration(newObj) // pass object to function and get next version of object
+        console.log(nextGeneration)
+        const nextBoard = convertObject(nextGeneration) // pass new object to convertObject function, return a 2d board
+        console.log(nextBoard)
+        setBoard(nextBoard)
+        setGeneration(prevGeneration => prevGeneration + 1)
+        setNewObj(nextGeneration)
     }
 
     return (
         <div>
-            {/* <h1>The Grid!</h1> */}
+            <h1>The Grid!</h1>
             <div>
-           <ul className='grid'>
+            <ul className='grid'>
             {board.map((row,i) => 
                 row.map((col,j) =>
                 <Cell
@@ -93,7 +108,7 @@ function Game() {
                 setBoard={setBoard}
             />))
             }
-           </ul>
+            </ul>
            </div>
            <br />
            {!gameRunning ?
@@ -108,6 +123,8 @@ function Game() {
             <button className='reset-off' onClick={handleReset}>Reset</button> :
             <button className='reset-on' onClick={handleReset}>Reset</button>
             }
+            <button onClick={handleNext}>Next</button>
+            <div>Generations: {generation}</div>
         </div>
     )
    
@@ -115,35 +132,3 @@ function Game() {
 
 export default Game;
 
-    // return (
-    //     <div>
-    //         <h1>The Grid!</h1>
-    //         {board.map((row, i) => {
-    //             return (
-    //                 <ul key={i}>{row.map((cell, j) => {
-    //                     return !cellAlive ? (
-    //                         <div style={{background:"red", height:"10px", width:"10px", cursor:"pointer"}} key={j} onClick={() => handleAlive([i,j])}>{null}</div>
-    //                     ) : (<p style={{background:"black", height:"10px", width:"10px", cursor:"pointer"}} key={j} onClick={() => setCellAlive(!cellAlive)}>{null}</p>)
-    //                 })}</ul>
-    //             )
-    //         } )}
-    //         <button onClick={handleStart}>Start</button>
-    //         <button onClick={handleStop}>Stop</button>
-    //     </div>
-    // )
-
-            // const newIntervalId = setInterval(() => {
-        //     console.log(board)
-        //     const converted = convertGrid(board) // pass 2d board to convertgrid function, return an object, set "converted" to that object
-        //     console.log(converted)
-        //     const nextGeneration = getNextGeneration(converted)
-        //     console.log(nextGeneration)
-        //     const nextBoard = convertObject(nextGeneration)
-        //     console.log(nextBoard)
-        // }, 2000);
-        // setIntervalId(newIntervalId)
-
-        // if (intervalId) {
-        //     clearInterval(intervalId)
-        //     setIntervalId(0)
-        // }
