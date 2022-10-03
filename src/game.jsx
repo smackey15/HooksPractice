@@ -5,7 +5,7 @@ import Cell from './cell'
 import './game.css'
 
 function Game() {
-    // initialize grid to 10 x 10 2d array with undefined values
+    // initialize grid to 40 x 100 2d array with undefined values
     const grid = Array.from(Array(40), () => new Array(100).fill())
     
     // converts 2d array into object that can be passed into 'getNextGeneration' function
@@ -28,16 +28,33 @@ function Game() {
         for (let row in object) { // 8
             // if (!twoD[row]) twoD[row] = new Array(10).fill() // ** this code makes the grid expand as the coordinates grow beyong the existing rows
             if (twoD[row]) { // this code stops the board from expanding beyong the existing parameters
-            const cols = object[row] // 8
+            const cols = object[row] 
             if (cols.length) {
                 for (let i=0; i<cols.length; i++) {
-                    if (cols[i] <=99) { // ** not dynamic **
+                    if (cols[i] <=99) { 
                         twoD[row][cols[i]] = 1
                     }
                 }
             }
         }
         }
+        return twoD
+    }
+
+    const blinker = () => {
+        const twoD = Array.from(Array(40), () => new Array(100).fill())
+        twoD[19][49] = 1
+        twoD[20][49] = 1
+        twoD[21][49] = 1
+        return twoD
+    }
+    const spaceShip = () => {
+        const twoD = Array.from(Array(40), () => new Array(100).fill())
+        twoD[19][48] = 1
+        twoD[20][49] = 1
+        twoD[21][47] = 1
+        twoD[21][48] = 1
+        twoD[21][49] = 1
         return twoD
     }
 
@@ -56,9 +73,6 @@ function Game() {
     useEffect(() => {
         if (gameRunning) {
         const newIntervalId = setInterval(() => {
-            // console.log(board)
-            // const converted = convertGrid(board) // pass 2d board to convertgrid function, return an object
-            // console.log(converted)
             const nextGeneration = getNextGeneration(newObj) // pass object to function and get next version of object
             console.log(nextGeneration)
             const nextBoard = convertObject(nextGeneration) // pass new object to convertObject function, return a 2d board
@@ -82,19 +96,40 @@ function Game() {
         setNewObj({})
     }
 
-    const handleNext = () => {
-        const nextGeneration = getNextGeneration(newObj) // pass object to function and get next version of object
+    const handleNext = () => { // why won't this work unless I have alredy started and stopped the useEffect/setInterval function?
+        const newestObj = convertGrid(board)
+        setNewObj(newestObj)
+        const nextGeneration = getNextGeneration(newObj) 
         console.log(nextGeneration)
-        const nextBoard = convertObject(nextGeneration) // pass new object to convertObject function, return a 2d board
+        const nextBoard = convertObject(nextGeneration)
         console.log(nextBoard)
         setBoard(nextBoard)
         setGeneration(prevGeneration => prevGeneration + 1)
         setNewObj(nextGeneration)
     }
 
+    const handleInput = (e) => {
+        const obj = {"grid": grid, "blinker": blinker, "spaceship": spaceShip}
+        const boardType = e.target.value
+        // const variableVersion = eval(boardType)
+        const variableVersion = obj[boardType]
+        setBoard(variableVersion)
+    }
+
+
     return (
         <div>
             <h1>The Grid!</h1>
+            <div>
+                <label>Templates</label>
+                <select onChange={handleInput}>
+                <option value='grid'>--Please Select--</option>
+                <option value='blinker'>Blinker</option>
+                <option value='spaceship'>Spaceship</option>
+                </select>
+            </div>
+            <br />
+            <br />
             <div>
             <ul className='grid'>
             {board.map((row,i) => 
