@@ -94,6 +94,9 @@ function Game() {
         setBoard(grid)
         setGeneration(0)
         setNewObj({})
+        const selectbox = document.getElementById('temp')
+        selectbox.selectedIndex = 0
+        
     }
 
     const handleNext = () => { // why won't this work unless I have alredy started and stopped the useEffect/setInterval function?
@@ -110,7 +113,7 @@ function Game() {
 
     const handleInput = (e) => {
         const obj = {"grid": grid, "blinker": blinker, "spaceship": spaceShip}
-        const boardType = e.target.value
+        const boardType = e===null ? "grid" : e.target.value
         // const variableVersion = eval(boardType)
         const variableVersion = obj[boardType]
         setBoard(variableVersion)
@@ -122,14 +125,12 @@ function Game() {
             <h1>The Grid!</h1>
             <div>
                 <label>Templates</label>
-                <select onChange={handleInput}>
+                <select id='temp' onChange={handleInput}>
                 <option value='grid'>--Please Select--</option>
                 <option value='blinker'>Blinker</option>
                 <option value='spaceship'>Spaceship</option>
                 </select>
             </div>
-            <br />
-            <br />
             <div>
             <ul className='grid'>
             {board.map((row,i) => 
