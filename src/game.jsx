@@ -6,7 +6,7 @@ import './game.css'
 
 function Game() {
     // initialize grid to 40 x 100 2d array with undefined values
-    const grid = Array.from(Array(40), () => new Array(100).fill())
+    const grid = Array.from(Array(36), () => new Array(100).fill())
     
     // converts 2d array into object that can be passed into 'getNextGeneration' function
     const convertGrid = (twoD) => {
@@ -24,7 +24,7 @@ function Game() {
 
     // converts object back into 2D array that can be rendered on the browser
     const convertObject = (object) => {
-        const twoD = Array.from(Array(40), () => new Array(100).fill())
+        const twoD = Array.from(Array(36), () => new Array(100).fill())
         for (let row in object) { // 8
             // if (!twoD[row]) twoD[row] = new Array(10).fill() // ** this code makes the grid expand as the coordinates grow beyong the existing rows
             if (twoD[row]) { // this code stops the board from expanding beyong the existing parameters
@@ -42,14 +42,14 @@ function Game() {
     }
 
     const blinker = () => {
-        const twoD = Array.from(Array(40), () => new Array(100).fill())
+        const twoD = Array.from(Array(36), () => new Array(100).fill())
         twoD[19][49] = 1
         twoD[20][49] = 1
         twoD[21][49] = 1
         return twoD
     }
     const spaceShip = () => {
-        const twoD = Array.from(Array(40), () => new Array(100).fill())
+        const twoD = Array.from(Array(36), () => new Array(100).fill())
         twoD[19][48] = 1
         twoD[20][49] = 1
         twoD[21][47] = 1
@@ -100,8 +100,9 @@ function Game() {
     }
 
     const handleNext = () => { // why won't this work unless I have alredy started and stopped the useEffect/setInterval function?
-        const newestObj = convertGrid(board)
-        setNewObj(newestObj)
+        // const newestObj = convertGrid(board)
+        // setNewObj(newestObj)
+        setNewObj(convertGrid(board))
         const nextGeneration = getNextGeneration(newObj) 
         console.log(nextGeneration)
         const nextBoard = convertObject(nextGeneration)
@@ -112,6 +113,10 @@ function Game() {
     }
 
     const handleInput = (e) => {
+        if (gameRunning) {
+            setGamerunning(false)
+            setGeneration(0)
+        }
         const obj = {"grid": grid, "blinker": blinker, "spaceship": spaceShip}
         const boardType = e===null ? "grid" : e.target.value
         // const variableVersion = eval(boardType)
@@ -122,7 +127,7 @@ function Game() {
 
     return (
         <div>
-            <h1>The Grid!</h1>
+            {/* <h1>The Grid!</h1> */}
             <div>
                 <label>Templates</label>
                 <select id='temp' onChange={handleInput}>
