@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import { getNextGeneration } from './gol';
-import {blinker, spaceShip, pulsar} from './templates';
+import {blinker, spaceShip, pulsar, gosper} from './templates';
 import Cell from './cell';
 import './game.css';
 
@@ -64,7 +64,7 @@ function Game() {
             setBoard(nextBoard)
             setGeneration(prevGeneration => prevGeneration + 1)
             setNewObj(nextGeneration)
-        }, 500);
+        }, 2000);
         return (()=> clearInterval(newIntervalId))
     }
     })
@@ -101,12 +101,12 @@ function Game() {
             setGamerunning(false)
             setGeneration(0)
         }
-        const obj = {"grid": grid, "blinker": blinker, "spaceship": spaceShip, "pulsar": pulsar}
+        const obj = {"grid": grid, "blinker": blinker, "spaceship": spaceShip, "pulsar": pulsar, "gosper": gosper}
         const boardType = e===null ? "grid" : e.target.value
         const variableVersion = obj[boardType]
         setBoard(variableVersion)
+        console.log(board)
     }
-
 
     return (
         <div>
@@ -118,6 +118,7 @@ function Game() {
                 <option value='blinker'>Blinker</option>
                 <option value='spaceship'>Spaceship</option>
                 <option value='pulsar'>Pulsar</option>
+                <option value='gosper'>Gosper Glider Gun</option>
                 </select>
             </div>
             <div>
