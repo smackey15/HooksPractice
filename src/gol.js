@@ -66,10 +66,10 @@ const hasNeighbors = (board, r, c) => { // board, 15, 0
         [r - 1, c + 1], // 14, 1
     ]
     for (let neighbor of neighbors) {
-        const [i, j] = neighbor // 15, 0
+        const [i, j] = neighbor // 14, 0
         if (!(i in board)) board[i] = [] // 
         const idx = board[i].indexOf(j) // 0
-        if (board[i][idx] !== null) return true // 
+        if (board[i][idx] || board[i][idx] === 0) return true // 
     }
     return false
 }
