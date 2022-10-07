@@ -64,7 +64,7 @@ function Game() {
             setBoard(nextBoard)
             setGeneration(prevGeneration => prevGeneration + 1)
             setNewObj(nextGeneration)
-        }, 2000);
+        }, 200);
         return (()=> clearInterval(newIntervalId))
     }
     })

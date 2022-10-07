@@ -43,7 +43,7 @@ function getNextGeneration(inputBoard) { // {14: [2], 15: [2], 16: [2]}
     }
     return outputBoard
 }
-console.log(getNextGeneration({14: [2], 15: [2], 16: [2]}))
+console.log(getNextGeneration({14: [], 15: [1, 2, 3], 16: []}))
 
 // console.log(getNextGeneration({14: [], 15: [2], 16: []}))
 

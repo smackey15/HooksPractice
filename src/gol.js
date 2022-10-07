@@ -10,6 +10,8 @@ export function getNextGeneration(inputBoard) { // {14: [], 15: [2], 16: []} // 
         for (let col of cols) { 
            const i = Number(row) // 15
            const j = col // 2
+           const idx = inputBoard[row].indexOf(col)
+           if(!hasNeighbors(inputBoard, i, j)) outputBoard[row].splice(idx, 1)
            console.log(col)
            const neighbors = [
             // cols.length === 1 && inputBoard[i+1]?.length === 0 && inputBoard[i-1]?.length === 0 ? [i, j] : [],
@@ -52,4 +54,24 @@ export function getNextGeneration(inputBoard) { // {14: [], 15: [2], 16: []} // 
     return outputBoard
 }
 
-// console.log(getNextGeneration({14: [], 15: [2], 16: []}))
+const hasNeighbors = (board, r, c) => {
+    const neighbors = [
+        [r, c + 1], // "15, 3": 1
+        [r, c - 1], // 15, 1
+        [r + 1, c], // 16, 2
+        [r - 1, c], // 14, 2
+        [r + 1, c + 1], // 16, 3
+        [r - 1, c - 1], // 14, 1
+        [r + 1, c - 1], // 16, 1
+        [r - 1, c + 1], // 14, 3
+    ]
+    for (let neighbor of neighbors) {
+        const [i, j] = neighbor
+        if (!(i in board)) board[i] = [] // 
+        const idx = board[i].indexOf(j)
+        if (board[i][idx]) return true
+    }
+    return false
+}
+
+// console.log(getNextGeneration({14: [], 15: [1, 2, 3], 16: []}))
