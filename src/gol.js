@@ -3,14 +3,14 @@ export function getNextGeneration(inputBoard) { // {14: [], 15: [2], 16: []} // 
     const outputBoard = JSON.parse(JSON.stringify(inputBoard)) 
     const hash = {}
 
-    for (let row in inputBoard) {  // 15, 16
+    for (let row in inputBoard) {  // 15
         console.log(row)
-        const cols = inputBoard[row] // [2], []
+        const cols = inputBoard[row] // [0]
         console.log(cols)
         for (let col of cols) { 
            const i = Number(row) // 15
-           const j = col // 2
-           const idx = inputBoard[row].indexOf(col)
+           const j = col // 0
+           const idx = inputBoard[row].indexOf(col) // 0
            if(!hasNeighbors(inputBoard, i, j)) outputBoard[row].splice(idx, 1)
            console.log(col)
            const neighbors = [
@@ -54,24 +54,24 @@ export function getNextGeneration(inputBoard) { // {14: [], 15: [2], 16: []} // 
     return outputBoard
 }
 
-const hasNeighbors = (board, r, c) => {
+const hasNeighbors = (board, r, c) => { // board, 15, 0
     const neighbors = [
-        [r, c + 1], // "15, 3": 1
-        [r, c - 1], // 15, 1
-        [r + 1, c], // 16, 2
-        [r - 1, c], // 14, 2
-        [r + 1, c + 1], // 16, 3
-        [r - 1, c - 1], // 14, 1
-        [r + 1, c - 1], // 16, 1
-        [r - 1, c + 1], // 14, 3
+        [r, c + 1], // 15, 1
+        [r, c - 1], // 15, -1
+        [r + 1, c], // 16, 0
+        [r - 1, c], // 14, 0
+        [r + 1, c + 1], // 16, 1
+        [r - 1, c - 1], // 14, -1
+        [r + 1, c - 1], // 16, -1
+        [r - 1, c + 1], // 14, 1
     ]
     for (let neighbor of neighbors) {
-        const [i, j] = neighbor
+        const [i, j] = neighbor // 15, 0
         if (!(i in board)) board[i] = [] // 
-        const idx = board[i].indexOf(j)
-        if (board[i][idx]) return true
+        const idx = board[i].indexOf(j) // 0
+        if (board[i][idx] !== null) return true // 
     }
     return false
 }
 
-// console.log(getNextGeneration({14: [], 15: [1, 2, 3], 16: []}))
+console.log(getNextGeneration({14: [0], 15: [0], 16: [0]}))
