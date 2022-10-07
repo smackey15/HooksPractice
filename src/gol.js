@@ -1,19 +1,19 @@
 
-export function getNextGeneration(inputBoard) { // {14: [], 15: [2], 16: []}
+export function getNextGeneration(inputBoard) { // {14: [], 15: [2], 16: []} // does something need to go in the 14 and 16 arrays?
     const outputBoard = JSON.parse(JSON.stringify(inputBoard)) 
     const hash = {}
 
-    for (let row in inputBoard) {  // 15
+    for (let row in inputBoard) {  // 15, 16
         console.log(row)
-        const cols = inputBoard[row] // [2]
+        const cols = inputBoard[row] // [2], []
         console.log(cols)
         for (let col of cols) { 
            const i = Number(row) // 15
            const j = col // 2
            console.log(col)
            const neighbors = [
-            // inputBoard[i+1].length === 0 || inputBoard[i-1].length === 0 ? [i, j] : [],
-            [i, j + 1], // 15, 3
+            // cols.length === 1 && inputBoard[i+1]?.length === 0 && inputBoard[i-1]?.length === 0 ? [i, j] : [],
+            [i, j + 1], // "15, 3": 1
             [i, j - 1], // 15, 1
             [i + 1, j], // 16, 2
             [i - 1, j], // 14, 2
@@ -23,6 +23,7 @@ export function getNextGeneration(inputBoard) { // {14: [], 15: [2], 16: []}
             [i - 1, j + 1], // 14, 3
         ]
             for (let neighbor of neighbors) {
+                // check if each neighbor is alive and increment count, then apply game logic, then reset the count for the next cell
                 const [newI, newJ] = neighbor 
                 if(`${newI} ${newJ}` in hash) {
                     hash[`${newI} ${newJ}`] += 1
@@ -51,4 +52,4 @@ export function getNextGeneration(inputBoard) { // {14: [], 15: [2], 16: []}
     return outputBoard
 }
 
-// console.log(getNextGeneration({14: [2], 15: [2], 16: [2]}))
+// console.log(getNextGeneration({14: [], 15: [2], 16: []}))
