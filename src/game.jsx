@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react';
 import { getNextGeneration } from './gol';
 import {blinker, spaceShip, pulsar, gosper} from './templates';
 import Cell from './cell';
+import Modal from './modal'
 import './game.css';
 
 function Game() {
@@ -46,6 +47,7 @@ function Game() {
     const [gameRunning, setGamerunning] = useState(false)
     const [newObj, setNewObj] = useState({})
     const [generation, setGeneration] = useState(0)
+    const [modal, setModal] = useState(false)
 
     const handleStart = () => {
         setNewObj(convertGrid(board))
@@ -64,7 +66,7 @@ function Game() {
             setBoard(nextBoard)
             setGeneration(prevGeneration => prevGeneration + 1)
             setNewObj(nextGeneration)
-        }, 100);
+        }, 10);
         return (()=> clearInterval(newIntervalId))
     }
     })
@@ -106,6 +108,13 @@ function Game() {
         const variableVersion = obj[boardType]
         setBoard(variableVersion)
         console.log(board)
+    }
+
+    const openModal = () => {
+        setModal(true)
+    }
+    const closeModal = () => {
+        setModal(false)
     }
 
     return (
@@ -150,7 +159,18 @@ function Game() {
             <button className='reset-on' onClick={handleReset}>Reset</button>
             }
             <button onClick={handleNext}>Next</button>
+            <button onClick={openModal}>Click for instructions</button>
             <div>Generations: {generation}</div>
+
+            {modal ? 
+                    <div onClick={closeModal} className="modal">
+                        <div onClick={(e) => e.stopPropagation()} className="content">
+                        <Modal/>
+                        <button onClick={closeModal}>Back To Game</button>
+                        </div>
+                    </div>
+                        : <></>
+                } 
         </div>
     )
    
