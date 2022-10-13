@@ -118,55 +118,58 @@ function Game() {
     }
 
     return (
-        <div>
-            {/* <h1>The Grid!</h1> */}
-            <div>
+        <div className='all'>
+            <div className='header'>
                 <label>Templates</label>
+                <br />
                 <select id='temp' onChange={handleInput}>
-                <option value='grid'>--Please Select--</option>
-                <option value='blinker'>Blinker</option>
-                <option value='spaceship'>Spaceship</option>
-                <option value='pulsar'>Pulsar</option>
-                <option value='gosper'>Gosper Glider Gun</option>
+                    <option value='grid'>--Please Select--</option>
+                    <option value='blinker'>Blinker</option>
+                    <option value='spaceship'>Spaceship</option>
+                    <option value='pulsar'>Pulsar</option>
+                    <option value='gosper'>Gosper Glider Gun</option>
                 </select>
+                <p className='title'>Conway's Game of Life</p>
             </div>
             <div>
-            <ul className='grid'>
-            {board.map((row,i) => 
-                row.map((col,j) =>
-                <Cell
-                key={[i,j]}
-                r={i}
-                c={j}
-                pos={board[i][j]}
-                board={board}
-                setBoard={setBoard}
-            />))
-            }
-            </ul>
+                <ul className='grid'>
+                {board.map((row,i) => 
+                    row.map((col,j) =>
+                    <Cell
+                    key={[i,j]}
+                    r={i}
+                    c={j}
+                    pos={board[i][j]}
+                    board={board}
+                    setBoard={setBoard}
+                />))
+                }
+                </ul>
            </div>
            <br />
-           {!gameRunning ?
-            <button className='start-off' onClick={handleStart}>Start</button> :
-            <button className='start-on' onClick={handleStart}>Start</button>
-           }
-           {gameRunning ?
-            <button className='stop-off' onClick={handleStop}>Stop</button> :
-            <button className='stop-on' onClick={handleStop}>Stop</button> 
-            }
-            {!gameRunning ?
-            <button className='reset-off' onClick={handleReset}>Reset</button> :
-            <button className='reset-on' onClick={handleReset}>Reset</button>
-            }
-            <button onClick={handleNext}>Next</button>
-            <button onClick={openModal}>Click for instructions</button>
-            <div>Generations: {generation}</div>
+           <div className='footer'>
+                {!gameRunning ?
+                 <button className='start-off' onClick={handleStart}>Start</button> :
+                 <button className='start-on' onClick={handleStart}>Start</button>
+                }
+                {gameRunning ?
+                 <button className='stop-off' onClick={handleStop}>Stop</button> :
+                 <button className='stop-on' onClick={handleStop}>Stop</button> 
+                 }
+                 {!gameRunning ?
+                 <button className='reset-off' onClick={handleReset}>Reset</button> :
+                 <button className='reset-on' onClick={handleReset}>Reset</button>
+                 }
+                 <button onClick={handleNext}>Next</button>
+                 <button onClick={openModal}>Click for instructions</button>
+                <div>Generations: {generation}</div>
+            </div>
 
             {modal ? 
                     <div onClick={closeModal} className="modal">
                         <div onClick={(e) => e.stopPropagation()} className="content">
                         <Modal/>
-                        <button onClick={closeModal}>Back To Game</button>
+                        <button className='modal-exit' onClick={closeModal}>Back To Game</button>
                         </div>
                     </div>
                         : <></>

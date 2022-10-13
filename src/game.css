@@ -1,3 +1,24 @@
+.all {
+    background-color: whitesmoke;
+}
+
+.header {
+    display: flex;
+}
+
+.footer {
+    display: flex;
+}
+
+#temp {
+    background-color: lightblue;
+    height: 60%;
+}
+
+.title {
+    padding-left: 500px;
+}
+
 .grid {
     display: grid;
     grid-template-columns: repeat(100, 15px);
@@ -9,6 +30,7 @@
     color: black;
     background-color: lightblue;
     border-radius: 4px;
+    margin-left: 10px;
 }
 
 .start-off {
@@ -16,6 +38,7 @@
     color: lightblue;
     background-color: black;
     border-radius: 4px;
+    margin-left: 10px;
 }
 
 .stop-on {
@@ -23,6 +46,7 @@
     color: black;
     background-color: lightblue;
     border-radius: 4px;
+    margin-left: 10px;
 }
 
 .stop-off {
@@ -30,6 +54,7 @@
     color: lightblue;
     background-color: black;
     border-radius: 4px;
+    margin-left: 10px;
 }
 
 .reset-on {
@@ -37,6 +62,7 @@
     color: black;
     background-color: lightblue;
     border-radius: 4px;
+    margin-left: 10px;
 }
 
 .reset-off {
@@ -44,6 +70,7 @@
     color: lightblue;
     background-color: black;
     border-radius: 4px;
+    margin-left: 10px;
 }
 
 .modal {
@@ -65,4 +92,11 @@
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+}
+
+.modal-exit {
+    cursor: pointer;
+    color: black;
+    background-color: lightblue;
+    border-radius: 4px;
 }
