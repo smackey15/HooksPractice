@@ -5,6 +5,7 @@ import {blinker, glider, pulsar, gosper} from './templates';
 import Cell from './cell';
 import Modal from './modal'
 import './game.css';
+import {BsLinkedin, BsGithub} from 'react-icons/bs'
 
 function Game() {
     // initialize grid to 40 x 100 2d array with undefined values
@@ -130,6 +131,12 @@ function Game() {
                     <option value='gosper'>Gosper Glider Gun</option>
                 </select>
                 <p className='title'>Conway's Game of Life</p>
+                <p className='credit'>Implementation by Sean Mackey</p>
+                <div className='icons'>
+                <a href="https://www.linkedin.com/in/sean-mackey123/" target="_blank" rel="noreferrer"><span class="label"><BsLinkedin className='icon' /></span></a>
+                 <a href="https://seanmackey.me/" target="_blank" rel="noreferrer"><span class="label" >Portfolio</span></a>
+                 <a href="https://github.com/smackey15" target="_blank" rel="noreferrer"><span class="label"><BsGithub /></span></a>
+                 </div>
             </div>
             <div>
                 <ul className='grid'>
