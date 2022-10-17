@@ -160,9 +160,12 @@ function Game() {
                  <button className='reset-off' onClick={handleReset}>Reset</button> :
                  <button className='reset-on' onClick={handleReset}>Reset</button>
                  }
-                 <button onClick={handleNext}>Next</button>
-                 <button onClick={openModal}>Click for instructions</button>
-                <div>Generations: {generation}</div>
+                 {gameRunning ?
+                 <button className='next-off' onClick={handleNext}>Next</button> :
+                 <button className='next-on' onClick={handleNext}>Next</button>
+                }   
+                <div className='generations'>Generations: {generation}</div>
+                 <button className='instructions' onClick={openModal}>Click For Instructions</button>
             </div>
 
             {modal ? 
