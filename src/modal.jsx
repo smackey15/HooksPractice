@@ -15,7 +15,7 @@ function Modal() {
             <p>The "stop" button pauses the automatic transformations.</p>
             <p>The "next" button can be clicked to move through each transformation at your own pace rather than automatically.</p>
             <p>The "reset" button stops the transformations, clears the grid, and turns all cells back to dead</p>
-            <p>In addition to choosing your own live cells you can choose from some popular patterns in the "Templates" menu at the top of the page.</p>
+            <p>In addition to choosing your own live cells you can choose from some popular patterns in the "Favorites" menu at the top of the page.</p>
                 <ul>
                     <li>Blinker: a two generation oscillator that goes back and forth between two positions</li>
                     <li>Pulsar: a three generation oscillator that cycles between three positions</li>
