@@ -120,7 +120,7 @@ function Game() {
     return (
         <div className='all'>
             <div className='header'>
-                <label>Templates</label>
+                <label className='label'>Templates</label>
                 <br />
                 <select id='temp' onChange={handleInput}>
                     <option value='grid'>--Please Select--</option>
