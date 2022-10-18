@@ -79,11 +79,11 @@ function Game() {
         selectbox.selectedIndex = 0
     }
 
-    const handleNext = () => { // why won't this work unless I have alredy started and stopped the useEffect/setInterval function?
-        // const newestObj = convertGrid(board)
-        // setNewObj(newestObj)
-        setNewObj(convertGrid(board))
-        const nextGeneration = getNextGeneration(newObj) 
+    const handleNext = () => { 
+        setGamerunning(false)
+        // const tester = convertGrid(board)
+        // setNewObj(tester)
+        const nextGeneration = getNextGeneration(convertGrid(board)) 
         const nextBoard = convertObject(nextGeneration)
         setBoard(nextBoard)
         setGeneration(prevGeneration => prevGeneration + 1)
@@ -150,7 +150,11 @@ function Game() {
                  <button className='start-off' onClick={handleStart}>Start</button> :
                  <button className='start-on' onClick={handleStart}>Start</button>
                 }
-                {gameRunning ?
+                {!gameRunning ?
+                 <button className='next-off' onClick={handleNext}>Next</button> :
+                 <button className='next-on' onClick={handleNext}>Next</button>
+                }   
+                {!gameRunning ?
                  <button className='stop-off' onClick={handleStop}>Stop</button> :
                  <button className='stop-on' onClick={handleStop}>Stop</button> 
                  }
@@ -158,10 +162,10 @@ function Game() {
                  <button className='reset-off' onClick={handleReset}>Reset</button> :
                  <button className='reset-on' onClick={handleReset}>Reset</button>
                  }
-                 {gameRunning ?
+                 {/* {gameRunning ?
                  <button className='next-off' onClick={handleNext}>Next</button> :
                  <button className='next-on' onClick={handleNext}>Next</button>
-                }   
+                }    */}
                 <div className='generations'>Generations: {generation}</div>
                  <button className='instructions' onClick={openModal}>Instructions</button>
             </div>
