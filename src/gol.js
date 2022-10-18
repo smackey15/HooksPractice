@@ -1,36 +1,28 @@
 
-export function getNextGeneration(inputBoard) { // {14: [], 15: [4,6], 16: []} // does something need to go in the 14 and 16 arrays?
+export function getNextGeneration(inputBoard) {
     const outputBoard = JSON.parse(JSON.stringify(inputBoard)) 
     const hash = {}
 
-    for (let row in inputBoard) {  // 15
-        console.log(row)
-        const cols = inputBoard[row] // [4,6]
-        console.log(cols)
-       for (let col of cols) { 
-           const i = Number(row) // 15
-           const j = col // 4
-        //    const idx = inputBoard[row].indexOf(col) // 0
-           const idx = outputBoard[row].indexOf(col) // 0
+    for (let row in inputBoard) {
+        const cols = inputBoard[row]
+        for (let col of cols) { 
+           const i = Number(row) 
+           const j = col 
+           const idx = outputBoard[row].indexOf(col) 
            if(!hasNeighbors(inputBoard, i, j)) {
             outputBoard[row].splice(idx, 1)
-            // outputBoard[row].shift()
-            console.log('hi', outputBoard[row])
-            // continue;
            }
-           console.log(col)
            const neighbors = [
-            [i, j + 1], // "15, 3": 1
-            [i, j - 1], // 15, 1
-            [i + 1, j], // 16, 2
-            [i - 1, j], // 14, 2
-            [i + 1, j + 1], // 16, 3
-            [i - 1, j - 1], // 14, 1
-            [i + 1, j - 1], // 16, 1
-            [i - 1, j + 1], // 14, 3
+            [i, j + 1], 
+            [i, j - 1], 
+            [i + 1, j], 
+            [i - 1, j], 
+            [i + 1, j + 1], 
+            [i - 1, j - 1], 
+            [i + 1, j - 1], 
+            [i - 1, j + 1], 
         ]
             for (let neighbor of neighbors) {
-                // check if each neighbor is alive and increment count, then apply game logic, then reset the count for the next cell
                 const [newI, newJ] = neighbor 
                 if(`${newI} ${newJ}` in hash) {
                     hash[`${newI} ${newJ}`] += 1
@@ -40,18 +32,17 @@ export function getNextGeneration(inputBoard) { // {14: [], 15: [4,6], 16: []} /
             }
         }
     }
-    console.log(hash)
+
     for (let pos in hash) { 
-        const arrPos = pos.split(' ') // [15,3]
-        const r = arrPos[0] // 15
-        const c = arrPos[1] // 3
-        if (!(r in outputBoard)) outputBoard[r] = [] // ** NEW CODE **
+        const arrPos = pos.split(' ') 
+        const r = arrPos[0] 
+        const c = arrPos[1] 
+        if (!(r in outputBoard)) outputBoard[r] = [] 
         if(hash[pos] === 3) { 
             if (!outputBoard[r].includes(Number(c))) outputBoard[r].push(Number(c))
         }
         if(hash[pos] < 2 || hash[pos] > 3) {
-            // if (!(r in outputBoard)) outputBoard[r] = []
-            const index = outputBoard[r].indexOf(Number(c)) // 
+            const index = outputBoard[r].indexOf(Number(c)) 
             if (index !== -1) outputBoard[r].splice(index, 1)
         }
         outputBoard[r].sort((a,b) => a-b)
@@ -59,26 +50,24 @@ export function getNextGeneration(inputBoard) { // {14: [], 15: [4,6], 16: []} /
     return outputBoard
 }
 
-const hasNeighbors = (board, r, c) => { // board, 15, 4
-    console.log('inhelper')
+const hasNeighbors = (board, r, c) => { 
     const neighbors = [
-        [r, c + 1], // 15, 5
-        [r, c - 1], // 15, 3
-        [r + 1, c], // 16, 4
-        [r - 1, c], // 14, 4
-        [r + 1, c + 1], // 16, 5
-        [r - 1, c - 1], // 14, 3
-        [r + 1, c - 1], // 16, 6
-        [r - 1, c + 1], // 14, 5
+        [r, c + 1],
+        [r, c - 1], 
+        [r + 1, c], 
+        [r - 1, c], 
+        [r + 1, c + 1], 
+        [r - 1, c - 1], 
+        [r + 1, c - 1], 
+        [r - 1, c + 1], 
     ]
+    
     for (let neighbor of neighbors) {
-        const [i, j] = neighbor // 15, 5
-        if (!(i in board)) board[i] = [] // 
-        const idx = board[i].indexOf(j) // -1
-        console.log(idx)
-        if (board[i][idx] || board[i][idx] === 0) return true // 
+        const [i, j] = neighbor 
+        if (!(i in board)) board[i] = []  
+        const idx = board[i].indexOf(j) 
+        if (board[i][idx] || board[i][idx] === 0) return true  
     }
     return false
 }
 
-// console.log(getNextGeneration({14: [], 15: [4, 6, 8], 16: []}))
