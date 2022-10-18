@@ -38,6 +38,8 @@
     padding-left: 250px;
     margin-top: 25px;
     white-space: nowrap;
+    font-weight: 500;
+    color: black;
 }
 
 .icons {
@@ -155,7 +157,7 @@
     width: 150px;
     height: 25px;
     white-space: nowrap;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .modal {

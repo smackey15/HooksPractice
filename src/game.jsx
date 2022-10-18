@@ -172,7 +172,7 @@ function Game() {
                  <button className='next-on' onClick={handleNext}>Next</button>
                 }   
                 <div className='generations'>Generations: {generation}</div>
-                 <button className='instructions' onClick={openModal}>Click For Instructions</button>
+                 <button className='instructions' onClick={openModal}>Instructions</button>
             </div>
 
             {modal ? 
