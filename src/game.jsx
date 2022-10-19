@@ -10,7 +10,6 @@ import {BsLinkedin, BsGithub} from 'react-icons/bs'
 function Game() {
     const grid = Array.from(Array(36), () => new Array(100).fill())
     
-    // converts 2d array into object that can be passed into 'getNextGeneration' function
     const convertGrid = (twoD) => {
         const obj = {}
         for (let i=0; i<twoD.length; i++) {
@@ -24,7 +23,6 @@ function Game() {
         return obj
     }
 
-    // converts object back into 2D array that can be rendered on the browser
     const convertObject = (object) => {
         const twoD = Array.from(Array(36), () => new Array(100).fill())
         for (let row in object) {
