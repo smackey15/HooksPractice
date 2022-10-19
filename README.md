@@ -12,7 +12,8 @@ The game is played on an infinite two-dimensional grid. The grid is transformed 
 - Any dead cell with exactly three alive neighbors becomes alive (reproduction)
 - Any alive cell with exactly two or three alive neighbors remains alive
 - Any alive cell with less than two or more than three alive neighbors becomes dead (underpopulation or overpopulation)
-- This produces a new grid and the rules are then applied to this new grid, and so on
+These rules are applied simultaneously to every cell on the grid, dead or alive.
+This produces a new grid and the rules are then applied to this new grid, and so on
 
 ## Technologies
 
