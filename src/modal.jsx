@@ -11,7 +11,7 @@ function Modal() {
                     <li>Any alive cell with less than two or more than three alive neighbors becomes dead</li>
                     <li>This produces a new grid and the rules are then applied to this new grid, and so on</li>
                 </ul>
-            <p>In this implemenation all cells begin dead. You may click any combination of cells to turn them alive then press the "Play" button to watch the grid transform automatically.</p>
+            <p>In this implemenation all cells begin dead. You may click any combination of cells to turn them alive then press the "Start" button to watch the grid transform automatically.</p>
             <p>The "Next" button can be used to move through each transformation at your own pace rather than automatically.</p>
             <p>The "Stop" button pauses the automatic transformations.</p>
             <p>The "Reset" button stops the transformations and clears the grid, turning all cells back to dead.</p>
