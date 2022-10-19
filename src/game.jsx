@@ -45,10 +45,12 @@ function Game() {
     const [newObj, setNewObj] = useState({})
     const [generation, setGeneration] = useState(0)
     const [modal, setModal] = useState(false)
+    const [gameOn, setGameOn] = useState(false)
 
     const handleStart = () => {
         setNewObj(convertGrid(board))
         setGamerunning(true)
+        setGameOn(true)
     }
 
     useEffect(() => {
@@ -66,10 +68,12 @@ function Game() {
 
     const handleStop = () => {
         setGamerunning(false)
+        setGameOn(false)
     }
 
     const handleReset = () => {
         setGamerunning(false)
+        setGameOn(false)
         setBoard(grid)
         setGeneration(0)
         setNewObj({})
@@ -142,19 +146,19 @@ function Game() {
            </div>
            <br />
            <div className='footer'>
-                {!gameRunning ?
+                {!gameOn ?
                  <button className='start-off' onClick={handleStart}>Start</button> :
                  <button className='start-on' onClick={handleStart}>Start</button>
                 }
-                {!gameRunning ?
+                {!gameOn ?
                  <button className='next-off' onClick={handleNext}>Next</button> :
                  <button className='next-on' onClick={handleNext}>Next</button>
                 }   
-                {!gameRunning ?
+                {!gameOn ?
                  <button className='stop-off' onClick={handleStop}>Stop</button> :
                  <button className='stop-on' onClick={handleStop}>Stop</button> 
                  }
-                 {!gameRunning ?
+                 {!gameOn ?
                  <button className='reset-off' onClick={handleReset}>Reset</button> :
                  <button className='reset-on' onClick={handleReset}>Reset</button>
                  }
