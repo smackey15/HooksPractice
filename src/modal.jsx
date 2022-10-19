@@ -11,12 +11,12 @@ function Modal() {
                     <li>Any alive cell with less than two or more than three alive neighbors becomes dead</li>
                     <li>This produces a new grid and the rules are then applied to this new grid, and so on</li>
                 </ul>
-            <p>In this implemenation all cells begin dead. You may click any combination of cells to turn them alive then press the "play" button to watch the grid transform automatically.</p>
+            <p>In this implemenation all cells begin dead. You may click any combination of cells to turn them alive then press the "Play" button to watch the grid transform automatically.</p>
             <p>The "Next" button can be used to move through each transformation at your own pace rather than automatically.</p>
             <p>The "Stop" button pauses the automatic transformations.</p>
-            <p>The "Reset" button stops the transformations and clears the grid, turning all cells back to dead</p>
+            <p>The "Reset" button stops the transformations and clears the grid, turning all cells back to dead.</p>
             <p>The "Generations" counter keeps track of how many times the grid has transformed.</p>
-            <p>In addition to choosing your own alive cells you can choose from some popular configurations in the "Favorites" menu at the top of the page.</p>
+            <p>In addition to choosing your own pattern of alive cells you can choose from some popular configurations in the "Favorites" menu at the top of the page.</p>
                 <ul>
                     <li>Block: a still life that never changes from one generation to the next</li>
                     <li>Blinker: a two generation oscillator that goes back and forth between two configurations</li>

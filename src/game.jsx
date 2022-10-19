@@ -61,7 +61,7 @@ function Game() {
                 setBoard(nextBoard)
                 setGeneration(prevGeneration => prevGeneration + 1)
                 setNewObj(nextGeneration)
-            }, 10);
+            }, 50);
             return (()=> clearInterval(newIntervalId))
         }
     })
@@ -82,6 +82,7 @@ function Game() {
 
     const handleNext = () => { 
         setGamerunning(false)
+        setGameOn(true)
         const nextGeneration = getNextGeneration(convertGrid(board)) 
         const nextBoard = convertObject(nextGeneration)
         setBoard(nextBoard)
