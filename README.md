@@ -49,6 +49,45 @@ const glider = {
     4: []
 }
 ```
+When the board needs to expand at the edges or certain cells need to die, insertion and removal are at constant time.
+
+PROBLEM: Although the Javascript Object is preferred for the transformation function, there were three related challenges for interacting with the browswer version of the grid. One, the version of the board the user interacts with is a 2-D array and must be converted to an object for transformation. Two, the transformed object must be converted back into a 2-D array so that React can display it on the browser. Three, as the object version of the board transforms (infinitely, as it should) beyond the boundaries of the 2-D array browser version of the board, the live cells must fluidly disappear and reappear on the browser without raising errors. Initially this was breaking for me because the unbounded object board had rows and columns that did not exist in the bounded 2-D array board.
+
+SOLUTION: To solve these problems, I created algorithms that converted the board between object and array. Here is array to object:
+```javascript
+const convertGrid = (twoD) => {
+        const obj = {}
+        for (let i=0; i<twoD.length; i++) {
+            obj[i] = []
+            for (let j=0; j<twoD[i].length; j++) {
+                if (twoD[i][j] !== undefined) {
+                    obj[i].push(j)
+                } 
+            }
+        }
+        return obj
+    }
+```
+When converting the object back to an array, I prevented the algorithm from considering any row or column index that didn't exist in the pre-defined array (which for this app is a 36 x 100 grid): 
+```javascript
+const convertObject = (object) => {
+        const twoD = Array.from(Array(36), () => new Array(100).fill())
+        for (let row in object) {
+            if (twoD[row]) { // limit to existing rows
+            const cols = object[row] 
+                if (cols.length) {
+                    for (let i=0; i<cols.length; i++) {
+                        if (cols[i] <=99) { // limit to existing columns
+                            twoD[row][cols[i]] = 1
+                        }
+                    }
+                }
+            }
+        }
+        return twoD
+    }
+```
+This allows the object to transform ifinitely but only display cells on the browser that exist within the boundaries of the array being rendered. 
 
 ## Future Implementations
 - Play music while the transformations are occuring automatically
