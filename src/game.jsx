@@ -124,9 +124,9 @@ function Game() {
                 <p className='title'>Conway's Game of Life</p>
                 <p className='credit'>Implementation by Sean Mackey</p>
                 <div className='icons'>
-                    <a href="https://www.linkedin.com/in/sean-mackey123/" target="_blank" rel="noreferrer"><span class="label"><BsLinkedin className='icon' /></span></a>
-                    <a href="https://seanmackey.me/" target="_blank" rel="noreferrer"><span class="label" >Portfolio</span></a>
-                    <a href="https://github.com/smackey15" target="_blank" rel="noreferrer"><span class="label"><BsGithub /></span></a>
+                    <a href="https://www.linkedin.com/in/sean-mackey123/" target="_blank" rel="noreferrer"><span className="label"><BsLinkedin className='icon' /></span></a>
+                    <a href="https://seanmackey.me/" target="_blank" rel="noreferrer"><span className="label" >Portfolio</span></a>
+                    <a href="https://github.com/smackey15" target="_blank" rel="noreferrer"><span className="label"><BsGithub /></span></a>
                 </div>
             </div>
             <div>
@@ -162,10 +162,6 @@ function Game() {
                  <button className='reset-off' onClick={handleReset}>Reset</button> :
                  <button className='reset-on' onClick={handleReset}>Reset</button>
                  }
-                 {/* {gameRunning ?
-                 <button className='next-off' onClick={handleNext}>Next</button> :
-                 <button className='next-on' onClick={handleNext}>Next</button>
-                }    */}
                 <div className='generations'>Generations: {generation}</div>
                  <button className='instructions' onClick={openModal}>Instructions</button>
             </div>
