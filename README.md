@@ -51,7 +51,7 @@ const glider = {
 ```
 When the board needs to expand at the edges or certain cells need to die, insertion and removal are at constant time.
 
-PROBLEM: Although the Javascript Object is preferred for the transformation function, there were three related challenges for interacting with the browswer version of the grid. One, the version of the board the user interacts with is a 2-D array and must be converted to an object for transformation. Two, the transformed object must be converted back into a 2-D array so that React can display it on the browser. Three, as the object version of the board transforms (infinitely, as it should) beyond the boundaries of the 2-D array browser version of the board, the live cells must fluidly disappear and reappear on the browser without raising errors. Initially this was breaking for me because the unbounded object board had rows and columns that did not exist in the bounded 2-D array board.
+PROBLEM: Although the Javascript Object is preferred for the transformation function, there were three related challenges for interacting with the browswer version of the grid. One, the version of the board the user interacts with is a 2-D array and must be converted to an object for transformation. Two, the transformed object must be converted back into a 2-D array so that React can display it on the browser. Three, as the object version of the board transforms (infinitely, as it should) beyond the boundaries of the 2-D array browser version of the board, the live cells must fluidly disappear and reappear on the browser without raising errors. Initially this was breaking because the unbounded object board had rows and columns that did not exist in the bounded 2-D array board.
 
 SOLUTION: To solve these problems, I created algorithms that converted the board between object and array. Here is array to object:
 ```javascript
@@ -87,7 +87,7 @@ const convertObject = (object) => {
         return twoD
     }
 ```
-This allows the object to transform ifinitely but only display cells on the browser that exist within the boundaries of the array being rendered. 
+This allows the object to transform infinitely but only display cells on the browser that exist within the boundaries of the array being rendered. 
 
 ## Future Implementations
 - Play music while the transformations are occuring automatically
