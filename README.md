@@ -12,7 +12,7 @@ This app is my implementation of Conway's Game of Life.
 
 ## Features
 
-## Coding Challenges
+## Coding Challenges 
 
 ## Future Implementations
 

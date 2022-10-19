@@ -79,8 +79,6 @@ function Game() {
 
     const handleNext = () => { 
         setGamerunning(false)
-        // const tester = convertGrid(board)
-        // setNewObj(tester)
         const nextGeneration = getNextGeneration(convertGrid(board)) 
         const nextBoard = convertObject(nextGeneration)
         setBoard(nextBoard)
