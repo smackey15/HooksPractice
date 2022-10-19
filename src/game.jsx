@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import { getNextGeneration } from './gol';
-import {blinker, glider, pulsar, gosper} from './templates';
+import {block, blinker, glider, pulsar, gosper} from './templates';
 import Cell from './cell';
 import Modal from './modal'
 import './game.css';
@@ -68,7 +68,6 @@ function Game() {
 
     const handleStop = () => {
         setGamerunning(false)
-        setGameOn(false)
     }
 
     const handleReset = () => {
@@ -95,7 +94,7 @@ function Game() {
             setGamerunning(false)
             setGeneration(0)
         }
-        const obj = {"grid": grid, "blinker": blinker, "glider": glider, "pulsar": pulsar, "gosper": gosper}
+        const obj = {"grid": grid, "block": block, "blinker": blinker, "glider": glider, "pulsar": pulsar, "gosper": gosper}
         const boardType = e===null ? "grid" : e.target.value
         const variableVersion = obj[boardType]
         setBoard(variableVersion)
@@ -116,6 +115,7 @@ function Game() {
                 <br />
                 <select id='temp' onChange={handleInput}>
                     <option value='grid'>-- Please Select --</option>
+                    <option value='block'>Block</option>
                     <option value='blinker'>Blinker</option>
                     <option value='pulsar'>Pulsar</option>
                     <option value='glider'>Glider</option>
@@ -170,7 +170,7 @@ function Game() {
                     <div onClick={closeModal} className="modal">
                         <div onClick={(e) => e.stopPropagation()} className="content">
                             <Modal/>
-                            <button className='modal-exit' onClick={closeModal}>Back To Game</button>
+                            <button className='modal-exit' onClick={closeModal}>Back to Game</button>
                         </div>
                     </div>
                 : <></>

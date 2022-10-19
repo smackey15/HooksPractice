@@ -1,3 +1,12 @@
+export const block = () => {
+    const twoD = Array.from(Array(36), () => new Array(100).fill())
+    twoD[19][48] = 1
+    twoD[19][49] = 1
+    twoD[20][48] = 1
+    twoD[20][49] = 1
+    return twoD
+}
+
 export const blinker = () => {
     const twoD = Array.from(Array(36), () => new Array(100).fill())
     twoD[19][49] = 1
@@ -5,6 +14,7 @@ export const blinker = () => {
     twoD[21][49] = 1
     return twoD
 }
+
 export const glider = () => {
     const twoD = Array.from(Array(36), () => new Array(100).fill())
     twoD[19][48] = 1
