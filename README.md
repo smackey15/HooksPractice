@@ -12,10 +12,14 @@ The game is played on an infinite two-dimensional grid. The grid is transformed 
 - Any dead cell with exactly three alive neighbors becomes alive (reproduction)
 - Any alive cell with exactly two or three alive neighbors remains alive
 - Any alive cell with less than two or more than three alive neighbors becomes dead (underpopulation or overpopulation)
+
 These rules are applied simultaneously to every cell on the grid, dead or alive.
-This produces a new grid and the rules are then applied to this new grid, and so on
+This produces a new grid and the rules are then applied to this new grid, and so on.
 
 ## Technologies
+- Javascript for the function that transforms the grid and the sample board configurations
+- React (implemented only with hooks) for rendering and updating a version of the grid in the browser and creating an interactive UI
+- CSS for styling the game for display in the browser
 
 ## Features
 
