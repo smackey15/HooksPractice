@@ -59,8 +59,10 @@ function Game() {
                 const nextGeneration = getNextGeneration(newObj) 
                 const nextBoard = convertObject(nextGeneration) 
                 setBoard(nextBoard)
+                console.log(board)
                 setGeneration(prevGeneration => prevGeneration + 1)
                 setNewObj(nextGeneration)
+                console.log(newObj)
             }, 50);
             return (()=> clearInterval(newIntervalId))
         }
