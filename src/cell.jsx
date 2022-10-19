@@ -15,8 +15,8 @@ function Cell(props) {
     return (
         <div>
             {props.pos !== 1 ?
-                <div style={{background:"gray", height:"15px", width:"15px", border: '1px solid lightgrey', cursor:"pointer"}} onClick={handleAlive}>{}</div> :
-                <div style={{background:"black", height: "15px", width:"15px",border: '1px solid lightgrey',  cursor:"pointer"}} onClick={handleAlive}>{}</div>
+                <div className='dead-cell' onClick={handleAlive}>{}</div> :
+                <div className='live-cell' onClick={handleAlive}>{}</div>
             }
         </div>
     )

@@ -48,6 +48,22 @@
     grid-template-rows: auto
 }
 
+.live-cell {
+    background-color: black;
+    height: 15px;
+    width: 15px;
+    border: solid 1px lightgray;
+    cursor: pointer
+}
+
+.dead-cell {
+    background-color: gray;
+    height: 15px;
+    width: 15px;
+    border: solid 1px lightgray;
+    cursor: pointer
+}
+
 .footer {
     display: flex;
     align-items: center;
@@ -177,6 +193,10 @@
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+}
+
+.wiki-link {
+    color: lightblue;
 }
 
 .modal-exit {

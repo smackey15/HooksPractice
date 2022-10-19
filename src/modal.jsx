@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 function Modal() {
     return (
         <div>
@@ -22,7 +23,7 @@ function Modal() {
                     <li>Glider: a spaceship that moves across the grid as it transforms. It will eventually move off the visible grid in the browser, but continues to transform infinitely</li>
                     <li>Gosper Glider Gun: a famous shape that acts like a "gun", producing then shooting off gliders that move down and right across the grid</li>
                 </ul>
-            <p><a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank" rel="noreferrer" style={{color: 'lightblue'}}>Learn more here!</a></p>
+            <p><a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank" rel="noreferrer" className='wiki-link'>Learn more here!</a></p>
         </div>
     )
 }
