@@ -30,7 +30,7 @@ With this version of Conway's Game of Life, user's can:
 - Toggle any cells between dead (gray) and alive (black) via mouse click until they have their desired starting configuration
 - Alternatively, they can select an existing configuration from the `Favorites` drop down menu and the grid will populate accordingly
 - Click `Start` to see the grid transform automatically and continuously
-- Click `Next` to move through each tranformation at their own pace rather than automatically
+- Click `Next` to move through each transformation at their own pace rather than automatically
 - Click `Stop` to pause the automatic transformations
 - Click `Reset` to stop the transformations, clear the grid, and return all cells to dead (gray)
 - View a 'Generations' counter that keeps track of how many times the grid has transformed
@@ -39,7 +39,7 @@ With this version of Conway's Game of Life, user's can:
 
 PROBLEM: The game is played on, and represented on the browwer by, a two dimensional grid. However, in the function that applies the game rules and transforms the grid accordingly, I did not want to use a 2-D array as the data structure to represent the board. One, using a 2-D array means that every cell coordinate has to be represented as either dead or alive and iterated over. This is especially wasteful if you consider the number of dead cells on the grid that are nowhere near a live cell and have no chance of becoming alive in the transformation. Two, the grid is meant to be infinite but a 2-D array has boundaries. As the configurations approach the edges you could add rows and columns, but this is costly, especially if you reach the top or left of the grid. You would have to use expensive unshift operations to place new rows/columns at the beginning and essentially re-index the entire 2-D array.
 
-SOLUTION: Use a Javascript Object as the data structure to reprsent the board in the funciton that applies the game rules. This object holds only the coordinates of the live cells, because transformations only happen in proximity to live cells. The keys of the object are the indices of the rows and the values are arrays of numbers representing the indices of the columns. For example, the spaceship glider looks like this:
+SOLUTION: Use a Javascript Object as the data structure to represent the board in the funciton that applies the game rules. This object holds only the coordinates of the live cells, because transformations only happen in proximity to live cells. The keys of the object are the indices of the rows and the values are arrays of numbers representing the indices of the columns. For example, the spaceship glider looks like this:
 ```javascript
 const glider = {
     0: [],
@@ -51,9 +51,9 @@ const glider = {
 ```
 When the board needs to expand at the edges or certain cells need to die, insertion and removal are at constant time.
 
-PROBLEM: Although the Javascript Object is preferred for the transformation function, there were three related challenges for interacting with the browswer version of the grid. One, the version of the board the user interacts with is a 2-D array and must be converted to an object for transformation. Two, the transformed object must be converted back into a 2-D array so that React can display it on the browser. Three, as the object version of the board transforms (infinitely, as it should) beyond the boundaries of the 2-D array browser version of the board, the live cells must fluidly disappear and reappear on the browser without raising errors. Initially this was breaking because the unbounded object board had rows and columns that did not exist in the bounded 2-D array board.
+PROBLEM: Although the Javascript Object is preferred for the transformation function, there were three related challenges for interacting with the browswer version of the board. One, the version of the board the user interacts with is a 2-D array and must be converted to an object for transformation. Two, the transformed object must be converted back into a 2-D array so that React can display it on the browser. Three, as the object version of the board transforms (infinitely, as it should) beyond the boundaries of the 2-D array browser version of the board, the live cells must fluidly disappear and reappear on the browser without raising errors. Initially this was breaking because the unbounded object board had rows and columns that did not exist in the bounded 2-D array board.
 
-SOLUTION: To solve these problems, I created algorithms that converted the board between object and array. Here is array to object:
+SOLUTION: To solve these problems, I created algorithms that converted the board from array to object and back. Here is array to object:
 ```javascript
 const convertGrid = (twoD) => {
         const obj = {}
