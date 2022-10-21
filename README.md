@@ -1,6 +1,6 @@
 # Conway's Game of Life
 
-Visit the live site [here!](https://github.com/facebook/create-react-app) NEED TO UPDATE URL AFTER DEPLOYED
+<!-- Visit the live site [here!](https://github.com/facebook/create-react-app) NEED TO UPDATE URL AFTER DEPLOYED -->
 
 ## Description
 
