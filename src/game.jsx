@@ -97,6 +97,7 @@ function Game() {
             setGamerunning(false)
             setGeneration(0)
         }
+        if (gameOn) setGameOn(!gameOn)
         const obj = {"grid": grid, "block": block, "blinker": blinker, "glider": glider, "pulsar": pulsar, "gosper": gosper}
         const boardType = e===null ? "grid" : e.target.value
         const variableVersion = obj[boardType]
