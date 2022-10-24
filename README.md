@@ -1,6 +1,6 @@
 # Conway's Game of Life
 
-Visit the live site [here!](http://seanmackey.me/game_of_life/)
+Visit the live site [here!](https://seanmackey.me/game_of_life/)
 
 ## Description
 
