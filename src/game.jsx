@@ -63,7 +63,7 @@ function Game() {
                 setGeneration(prevGeneration => prevGeneration + 1)
                 setNewObj(nextGeneration)
                 console.log(newObj)
-            }, 70);
+            }, 200);
             return (()=> clearInterval(newIntervalId))
         }
     })
@@ -125,7 +125,7 @@ function Game() {
                     <option value='glider'>Glider</option>
                     <option value='gosper'>Gosper Glider Gun</option>
                 </select>
-                <p className='title'>Conway's Game of Life .</p>
+                <p className='title'>Conway's Game of Life</p>
                 <p className='credit'>Implementation by Sean Mackey</p>
                 <div className='icons'>
                     <a href="https://www.linkedin.com/in/sean-mackey123/" target="_blank" rel="noreferrer"><span className="label"><BsLinkedin className='icon' /></span></a>
