@@ -21,7 +21,8 @@ function Modal() {
                     <li>Block: a still life that never changes from one generation to the next</li>
                     <li>Blinker: a two generation oscillator that goes back and forth between two configurations</li>
                     <li>Pulsar: a three generation oscillator that cycles between three configurations</li>
-                    <li>Glider: a spaceship that moves across the grid as it transforms. It will eventually move off the visible grid in the browser, but continue to transform infinitely</li>
+                    <li>Glider: a small spaceship that moves across the grid as it transforms. It will eventually move off the visible grid in the browser, but continue to transform infinitely</li>
+                    <li>Hammerhead: a large spaceship that "swims" across the grid from right to left as it transforms. It will eventually move off the visible grid in the browser, but continue to transform infinitely</li>
                     <li>Gosper Glider Gun: a clever configuration that acts like a "gun". It produces then "shoots" off gliders that move down, right, and eventually off the visible grid</li>
                 </ul>
             <p><a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank" rel="noreferrer" className='wiki-link'>Learn more here!</a></p>

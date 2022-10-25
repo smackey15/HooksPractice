@@ -78,6 +78,87 @@ export const pulsar = () => {
     return twoD        
 }
 
+export const hammerhead = () => {
+    const twoD = Array.from(Array(36), () => new Array(100).fill())
+    twoD[9][80] = 1
+    twoD[9][81] = 1
+    twoD[9][82] = 1
+    twoD[9][83] = 1
+    twoD[9][84] = 1
+    twoD[10][80] = 1
+    twoD[10][85] = 1
+    twoD[10][93] = 1
+    twoD[10][94] = 1
+    twoD[11][80] = 1
+    twoD[11][92] = 1
+    twoD[11][93] = 1
+    twoD[11][95] = 1
+    twoD[11][96] = 1
+    twoD[11][97] = 1
+    twoD[12][81] = 1
+    twoD[12][91] = 1
+    twoD[12][92] = 1
+    twoD[12][94] = 1
+    twoD[12][95] = 1
+    twoD[12][96] = 1
+    twoD[12][97] = 1
+    twoD[13][83] = 1
+    twoD[13][84] = 1
+    twoD[13][88] = 1
+    twoD[13][89] = 1
+    twoD[13][91] = 1
+    twoD[13][92] = 1
+    twoD[13][95] = 1
+    twoD[13][96] = 1
+    twoD[14][85] = 1
+    twoD[14][90] = 1
+    twoD[14][93] = 1
+    twoD[15][86] = 1
+    twoD[15][88] = 1
+    twoD[15][90] = 1
+    twoD[15][92] = 1
+    twoD[16][87] = 1
+    twoD[17][87] = 1
+    twoD[18][86] = 1
+    twoD[18][88] = 1
+    twoD[18][90] = 1
+    twoD[18][92] = 1
+    twoD[19][85] = 1
+    twoD[19][90] = 1
+    twoD[19][93] = 1
+    twoD[20][83] = 1
+    twoD[20][84] = 1
+    twoD[20][88] = 1
+    twoD[20][89] = 1
+    twoD[20][91] = 1
+    twoD[20][92] = 1
+    twoD[20][95] = 1
+    twoD[20][96] = 1
+    twoD[21][81] = 1
+    twoD[21][91] = 1
+    twoD[21][92] = 1
+    twoD[21][94] = 1
+    twoD[21][95] = 1
+    twoD[21][96] = 1
+    twoD[21][97] = 1
+    twoD[22][80] = 1
+    twoD[22][92] = 1
+    twoD[22][93] = 1
+    twoD[22][95] = 1
+    twoD[22][96] = 1
+    twoD[22][97] = 1
+    twoD[23][80] = 1
+    twoD[23][85] = 1
+    twoD[23][93] = 1
+    twoD[23][94] = 1
+    twoD[24][80] = 1
+    twoD[24][81] = 1
+    twoD[24][82] = 1
+    twoD[24][83] = 1
+    twoD[24][84] = 1
+    return twoD
+}
+
 export const gosper = () => {
     const twoD = Array.from(Array(36), () => new Array(100).fill())
     twoD[13][56] = 1

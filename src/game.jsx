@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import { getNextGeneration } from './gol';
-import {block, blinker, glider, pulsar, gosper} from './templates';
+import {block, blinker, glider, pulsar, hammerhead, gosper} from './templates';
 import Cell from './cell';
 import Modal from './modal'
 import './game.css';
@@ -98,7 +98,7 @@ function Game() {
             setGeneration(0)
         }
         if (gameOn) setGameOn(!gameOn)
-        const obj = {"grid": grid, "block": block, "blinker": blinker, "glider": glider, "pulsar": pulsar, "gosper": gosper}
+        const obj = {"grid": grid, "block": block, "blinker": blinker, "glider": glider, "pulsar": pulsar, "hammerhead": hammerhead, "gosper": gosper}
         const boardType = e===null ? "grid" : e.target.value
         const variableVersion = obj[boardType]
         setBoard(variableVersion)
@@ -123,6 +123,7 @@ function Game() {
                     <option value='blinker'>Blinker</option>
                     <option value='pulsar'>Pulsar</option>
                     <option value='glider'>Glider</option>
+                    <option value='hammerhead'>Hammerhead</option>
                     <option value='gosper'>Gosper Glider Gun</option>
                 </select>
                 <p className='title'>Conway's Game of Life</p>
