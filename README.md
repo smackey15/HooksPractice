@@ -92,6 +92,38 @@ const convertObject = (object) => {
 ```
 This allows the object to transform infinitely but only display cells on the browser that exist within the boundaries of the array being rendered. 
 
+PROBLEM: As noted above, the adjacency list that represents the board only holds coordinates for live cells. The algorithm generates coordinates of the eight neighbors of each live cell. It then counts how many times each neighbor is adjacent to a live cell. Each cell's fate is determined by how many live cells it is a neighbor to. However, while testing the glider gun template I discovered an edge case. If a live cell has no live neighbors (see black cell surrouded by yellow cells in photo below) it should become dead during the board transformation. Since the algorithm only applies the game rules to neighbors of live cells, it will not evaluate a cell that has NO live neighbors. That cell will stay alive even though it should become dead.
+
+![gosper_sample](./public/gosper_sample.png)
+
+SOLUTION: I added a helper function that checks each live cell to see if it has any live neighbors. If it returns false, the live cell is deleted (becomes dead) from the board. If it returns true the algorithm continues to evaluate the neighbors of the live cell as outlined above.
+````javascript
+    if(!hasNeighbors(inputBoard, i, j)) { // pass the board, row(i), and column(j) to the helper
+        outputBoard[row].splice(idx, 1)   // delete that cell if helper return false
+    }
+
+    const hasNeighbors = (board, r, c) => { 
+    const neighbors = [ // generate coordinates of eight neighbor cells
+        [r, c + 1],
+        [r, c - 1], 
+        [r + 1, c], 
+        [r - 1, c], 
+        [r + 1, c + 1], 
+        [r - 1, c - 1], 
+        [r + 1, c - 1], 
+        [r - 1, c + 1], 
+    ]
+    
+    for (let neighbor of neighbors) { // check if any neighbor is alive
+        const [i, j] = neighbor 
+        if (!(i in board)) board[i] = [] // if neighbor row is out of bounds, create it  
+        const idx = board[i].indexOf(j) 
+        if (board[i][idx] || board[i][idx] === 0) return true // if the coordinate value is truthy/exists or 0 it's a live neighbor  
+    }
+    return false
+}
+````
+
 ## Future Implementations
 - Play music while the transformations are occuring automatically
 - Allow users to select their own colors for dead and alive cells
