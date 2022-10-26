@@ -99,7 +99,7 @@ PROBLEM: As noted above, the adjacency list that represents the board only holds
 SOLUTION: I added a helper function that checks each live cell to see if it has any live neighbors. If it returns false, the live cell is deleted (becomes dead) from the board. If it returns true the algorithm continues to evaluate the neighbors of the live cell as outlined above.
 ````javascript
     if(!hasNeighbors(inputBoard, i, j)) { // pass the board, row(i), and column(j) to the helper
-        outputBoard[row].splice(idx, 1)   // delete that cell if helper return false
+        outputBoard[row].splice(idx, 1)   // delete that cell if helper returns false
     }
 
     const hasNeighbors = (board, r, c) => { 
