@@ -63,7 +63,7 @@ function Game() {
                 setGeneration(prevGeneration => prevGeneration + 1)
                 setNewObj(nextGeneration)
                 console.log(newObj)
-            }, 70);
+            }, 100);
             return (()=> clearInterval(newIntervalId))
         }
     })
