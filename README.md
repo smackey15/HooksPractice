@@ -92,7 +92,7 @@ const convertObject = (object) => {
 ```
 This allows the object to transform infinitely but only display cells on the browser that exist within the boundaries of the array being rendered. 
 
-PROBLEM: As noted above, the adjacency list that represents the board only holds coordinates for live cells. The algorithm generates coordinates of the eight neighbors of each live cell. It then counts how many times each neighbor is adjacent to a live cell. Each cell's fate is determined by how many live cells it is a neighbor to. However, while testing the glider gun template I discovered an edge case. If a live cell has no live neighbors (see black cell surrouded by yellow cells in photo below) it should become dead during the board transformation. Since the algorithm only applies the game rules to neighbors of live cells, it will not evaluate a cell that has NO live neighbors. That cell will stay alive even though it should become dead.
+PROBLEM: As noted above, the adjacency list that represents the board only holds coordinates for live cells. The algorithm generates coordinates of the eight neighbors of each live cell. It then counts how many times each neighbor is adjacent to a live cell. Each cell's fate is determined by how many live cells it is a neighbor to. However, while testing the glider gun template I discovered an edge case. If a live cell has no live neighbors (see black cell surrounded by yellow cells in photo below) it should become dead during the board transformation. Since the algorithm only applies the game rules to neighbors of live cells, it will not evaluate a cell that has NO live neighbors. That cell will stay alive even though it should become dead.
 
 ![gosper_sample](./public/gosper_sample.png)
 

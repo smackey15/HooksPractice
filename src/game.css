@@ -45,7 +45,7 @@
 .grid {
     display: grid;
     grid-template-columns: repeat(100, 15px);
-    grid-template-rows: auto
+    grid-template-rows: auto;
 }
 
 .live-cell {
@@ -208,3 +208,184 @@
     width: 150px;
     height: 25px;
 }
+
+/* @media screen and (max-width: 800px) {
+    .header {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .label {
+        margin-left: 20px;
+        margin-top: 25px;
+        color: black;
+        font-weight: 600;
+    }
+    
+    #temp {
+        background-color: lightblue;
+        height: 25px;
+        margin-left: 10px;
+        margin-top: 25px;
+        border-radius: 4px;
+        border: solid 1px black;
+    }
+    
+    .title {
+        padding-left: 450px;
+        font-weight: 900;
+        font-size: 20px;
+        white-space: nowrap;
+    }
+    
+    .credit {
+        padding-left: 250px;
+        margin-top: 25px;
+        white-space: nowrap;
+        font-weight: 500;
+        color: black;
+    }
+    
+    .icons {
+        margin-top: 27px;
+        white-space: nowrap;
+    }
+    
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(100, 15px);
+        grid-template-rows: auto;
+    }
+    
+    .live-cell {
+        background-color: black;
+        height: 15px;
+        width: 15px;
+        border: solid 1px lightblue;
+        cursor: pointer
+    }
+    
+    .dead-cell {
+        background-color: gray;
+        height: 15px;
+        width: 15px;
+        border: solid 1px lightblue;
+        cursor: pointer
+    }
+    
+    .footer {
+        display: flex;
+        align-items: center;
+        margin-top: -17.5px;
+        height: auto;
+    
+    }
+    
+    .start-on {
+        cursor: pointer;
+        color: black;
+        background-color: lightblue;
+        border-radius: 4px;
+        margin-left: 10px;
+        width: 100px;
+        height: 25px;
+        border: solid 1px;
+    }
+    
+    .start-off {
+        cursor: pointer;
+        color: lightblue;
+        background-color: black;
+        border-radius: 4px;
+        margin-left: 10px;
+        width: 100px;
+        height: 25px;
+    }
+    
+    .stop-on {
+        cursor: pointer;
+        color: black;
+        background-color: lightblue;
+        border-radius: 4px;
+        margin-left: 10px;
+        width: 100px;
+        height: 25px;
+        border: solid 1px;
+    }
+    
+    .stop-off {
+        cursor: pointer;
+        color: lightblue;
+        background-color: black;
+        border-radius: 4px;
+        margin-left: 10px;
+        width: 100px;
+        height: 25px;
+    }
+    
+    .reset-on {
+        cursor: pointer;
+        color: black;
+        background-color: lightblue;
+        border-radius: 4px;
+        margin-left: 10px;
+        width: 100px;
+        height: 25px;
+        border: solid 1px;
+    }
+    
+    .reset-off {
+        cursor: pointer;
+        color: lightblue;
+        background-color: black;
+        border-radius: 4px;
+        margin-left: 10px;
+        width: 100px;
+        height: 25px;
+    }
+    
+    .next-on {
+        cursor: pointer;
+        color: black;
+        background-color: lightblue;
+        border-radius: 4px;
+        margin-left: 10px;
+        width: 100px;
+        height: 25px;
+        border: solid 1px;
+    }
+    
+    .next-off {
+        cursor: pointer;
+        color: lightblue;
+        background-color: black;
+        border-radius: 4px;
+        margin-left: 10px;
+        width: 100px;
+        height: 25px;
+    }
+    
+    .generations {
+        color: black;
+        font-weight: 600;
+        margin-left: 10px;
+        margin-right: 140px;
+        white-space: nowrap;
+        text-overflow: hidden;
+        width: 100px;
+    }
+    
+    .instructions {
+        cursor: pointer;
+        color: lightblue;
+        background-color: black;
+        border-radius: 4px;
+        width: 150px;
+        height: 35px;
+        white-space: nowrap;
+        font-size: 18px;
+    }
+    
+
+
+} */
