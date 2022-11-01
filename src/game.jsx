@@ -115,6 +115,7 @@ function Game() {
     return (
         <div className='all'>
             <div className='header'>
+                <div className='menu'>
                 <label className='label'>Favorites</label>
                 <br />
                 <select id='temp' onChange={handleInput}>
@@ -126,6 +127,7 @@ function Game() {
                     <option value='hammerhead'>Hammerhead</option>
                     <option value='gosper'>Gosper Glider Gun</option>
                 </select>
+                </div>
                 <p className='title'>Conway's Game of Life</p>
                 <p className='credit'>Implementation by Sean Mackey</p>
                 <div className='icons'>
@@ -168,7 +170,7 @@ function Game() {
                  <button className='reset-on' onClick={handleReset}>Reset</button>
                  }
                 <div className='generations'>Generations: {generation}</div>
-                 <button className='instructions' onClick={openModal}>Instructions</button>
+                <button className='instructions' onClick={openModal}>Instructions</button>
             </div>
 
             {modal ? 

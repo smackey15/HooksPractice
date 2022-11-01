@@ -1,8 +1,13 @@
-.all {
+.all, html {
     background-color: whitesmoke;
 }
 
 .header {
+    display: flex;
+    justify-content:space-between;
+}
+
+.menu {
     display: flex;
 }
 
@@ -23,14 +28,16 @@
 }
 
 .title {
-    padding-left: 450px;
+    /* padding-left: 450px; */
+    padding-left: 20%;
     font-weight: 900;
     font-size: 20px;
     white-space: nowrap;
 }
 
 .credit {
-    padding-left: 250px;
+    /* padding-left: 250px; */
+    padding-left: 10%;
     margin-top: 25px;
     white-space: nowrap;
     font-weight: 500;
@@ -40,6 +47,7 @@
 .icons {
     margin-top: 27px;
     white-space: nowrap;
+    padding-right: 2%;
 }
 
 .grid {
@@ -209,7 +217,11 @@
     height: 25px;
 }
 
-/* @media screen and (max-width: 800px) {
+/* @media screen and (max-width: 600px) {
+    .all {
+        background-color: whitesmoke;
+    }
+    
     .header {
         display: flex;
         flex-direction: column;
@@ -229,17 +241,18 @@
         margin-top: 25px;
         border-radius: 4px;
         border: solid 1px black;
+        width: 50%;
     }
     
     .title {
-        padding-left: 450px;
+        margin-left: -50px;
         font-weight: 900;
         font-size: 20px;
         white-space: nowrap;
     }
     
     .credit {
-        padding-left: 250px;
+        margin-left: -20px;
         margin-top: 25px;
         white-space: nowrap;
         font-weight: 500;
@@ -253,7 +266,7 @@
     
     .grid {
         display: grid;
-        grid-template-columns: repeat(100, 15px);
+        grid-template-columns: repeat(30, 15px);
         grid-template-rows: auto;
     }
     
@@ -275,8 +288,10 @@
     
     .footer {
         display: flex;
+        flex-direction: column;
         align-items: center;
         margin-top: -17.5px;
+        margin-left: 80%;
         height: auto;
     
     }
@@ -368,8 +383,7 @@
     .generations {
         color: black;
         font-weight: 600;
-        margin-left: 10px;
-        margin-right: 140px;
+        margin-left: 260%;
         white-space: nowrap;
         text-overflow: hidden;
         width: 100px;
@@ -385,7 +399,5 @@
         white-space: nowrap;
         font-size: 18px;
     }
-    
-
 
 } */
